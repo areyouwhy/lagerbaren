@@ -1,6 +1,6 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
 
-const useGithub = !!process.env.KEYSTATIC_GITHUB_CLIENT_ID;
+const useGithub = process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB === "1";
 
 export default config({
   storage: useGithub
