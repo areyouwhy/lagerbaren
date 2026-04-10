@@ -1,9 +1,14 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
 
+const useGithub = !!process.env.KEYSTATIC_GITHUB_CLIENT_ID;
+
 export default config({
-  storage: {
-    kind: "local",
-  },
+  storage: useGithub
+    ? {
+        kind: "github",
+        repo: "areyouwhy/lagerbaren",
+      }
+    : { kind: "local" },
   collections: {
     menuLagerbaren: collection({
       label: "Meny Lagerbaren",
