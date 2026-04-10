@@ -1,7 +1,8 @@
 import { PageHero } from "@/components/page-hero";
+import { EventList } from "@/components/event-list";
 import { BRAND } from "@/lib/constants";
 import { getDict, type Venue } from "@/lib/i18n";
-import { getVenueEvents, getFestvaningInfo } from "@/lib/venue-content";
+import { getVenueEvents, splitEvents, getFestvaningInfo } from "@/lib/venue-content";
 
 export default async function VenueEventsPage({
   params,
@@ -13,6 +14,7 @@ export default async function VenueEventsPage({
   const t = getDict("sv");
   const brand = BRAND[v];
   const events = await getVenueEvents(v);
+  const { upcoming, past } = splitEvents(events);
   const festvaning = v === "lagerbaren" ? await getFestvaningInfo() : null;
 
   return (
@@ -24,25 +26,14 @@ export default async function VenueEventsPage({
       />
 
       <div className="mx-auto max-w-3xl px-4 py-12">
-        {/* Events list */}
         <h2 className="mb-4 text-2xl font-bold text-white">{t.events.upcoming}</h2>
-        {events.length > 0 ? (
-          <div className="mb-12 space-y-3">
-            {events.map((event) => (
-              <div
-                key={event.slug}
-                className="flex items-center justify-between rounded-lg border border-white/10 bg-zinc-900 px-4 py-3"
-              >
-                <div>
-                  <p className="font-medium text-white">{event.entry.title}</p>
-                  <p className="text-sm text-zinc-400">{event.entry.description}</p>
-                </div>
-                <div className="text-right text-sm text-zinc-400">
-                  <p>{event.entry.date}</p>
-                  <p>{event.entry.time}</p>
-                </div>
-              </div>
-            ))}
+        {upcoming.length > 0 || past.length > 0 ? (
+          <div className="mb-12">
+            <EventList
+              upcoming={upcoming}
+              past={past}
+              pastLabel={t.events.pastEvents}
+            />
           </div>
         ) : (
           <p className="mb-12 text-zinc-400">{t.events.emptyState}</p>

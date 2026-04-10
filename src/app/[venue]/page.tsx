@@ -2,7 +2,8 @@ import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { BRAND } from "@/lib/constants";
 import { getDict, type Venue } from "@/lib/i18n";
-import { getVenueEvents } from "@/lib/venue-content";
+import { getVenueEvents, splitEvents } from "@/lib/venue-content";
+import { UpcomingEventList } from "@/components/event-list";
 import { reader } from "@/lib/reader";
 
 export default async function VenueHome({
@@ -45,28 +46,15 @@ export default async function VenueHome({
           </div>
         )}
 
-        {events.length > 0 && (
-          <section className="mb-12">
-            <h2 className="mb-4 text-2xl font-bold text-white">{t.home.upcomingEvents}</h2>
-            <div className="space-y-3">
-              {events.slice(0, 5).map((event) => (
-                <div
-                  key={event.slug}
-                  className="flex items-center justify-between rounded-lg border border-white/10 bg-zinc-900 px-4 py-3"
-                >
-                  <div>
-                    <p className="font-medium text-white">{event.entry.title}</p>
-                    <p className="text-sm text-zinc-400">{event.entry.description}</p>
-                  </div>
-                  <div className="text-right text-sm text-zinc-400">
-                    <p>{event.entry.date}</p>
-                    <p>{event.entry.time}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
+        {(() => {
+          const { upcoming } = splitEvents(events);
+          return upcoming.length > 0 ? (
+            <section className="mb-12">
+              <h2 className="mb-4 text-2xl font-bold text-white">{t.home.upcomingEvents}</h2>
+              <UpcomingEventList events={upcoming.slice(0, 5)} />
+            </section>
+          ) : null;
+        })()}
 
         <div className="flex flex-wrap gap-4">
           <Link
