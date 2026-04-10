@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Lagerbaren & Masala Art | Södermalm, Stockholm",
@@ -16,10 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sv" className="h-full antialiased">
-      <body className="flex min-h-full flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+      <body className="flex min-h-full flex-col bg-background text-foreground">
+        {children}
       </body>
     </html>
   );

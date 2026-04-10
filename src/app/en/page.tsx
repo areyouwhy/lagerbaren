@@ -2,13 +2,13 @@ import Link from "next/link";
 import { getDict } from "@/lib/i18n";
 import { LanguageSwitcher } from "@/components/language-switcher";
 
-export default function LandingPage() {
-  const t = getDict("sv");
+export default function LandingPageEN() {
+  const t = getDict("en");
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-4">
       <div className="absolute right-6 top-6">
-        <LanguageSwitcher locale="sv" />
+        <LanguageSwitcher locale="en" />
       </div>
 
       <h1 className="mb-2 text-center text-5xl font-bold tracking-tight text-white md:text-7xl">
@@ -20,7 +20,7 @@ export default function LandingPage() {
 
       <div className="grid w-full max-w-3xl gap-6 md:grid-cols-2">
         <Link
-          href="/lagerbaren"
+          href="/en/lagerbaren"
           className="group relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900 p-10 transition-all hover:border-gold/40 hover:bg-zinc-900/80"
         >
           <h2 className="mb-3 text-4xl font-bold text-gold">Lagerbaren</h2>
@@ -33,7 +33,7 @@ export default function LandingPage() {
         </Link>
 
         <Link
-          href="/masala-art"
+          href="/en/masala-art"
           className="group relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900 p-10 transition-all hover:border-teal/40 hover:bg-zinc-900/80"
         >
           <h2 className="mb-3 text-4xl font-bold text-teal">Masala Art</h2>
