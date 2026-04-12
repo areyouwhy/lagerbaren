@@ -291,45 +291,64 @@ export function getVenueNav(locale: Locale, venue: Venue) {
   ];
 }
 
+// Subpage slug mappings — kept exhaustive so language switching covers
+// every route in the app. Detail-page slugs (e.g. event/<slug>, berattelser/<slug>)
+// are language-agnostic and pass through unchanged.
+const SV_TO_EN: Record<string, string> = {
+  meny: "menu",
+  lunch: "lunch",
+  galleri: "gallery",
+  berattelser: "stories",
+  event: "events",
+  boka: "book",
+  "hitta-oss": "find-us",
+};
+const EN_TO_SV: Record<string, string> = {
+  menu: "meny",
+  lunch: "lunch",
+  gallery: "galleri",
+  stories: "berattelser",
+  events: "event",
+  book: "boka",
+  "find-us": "hitta-oss",
+};
+
+/**
+ * Build the equivalent URL in the other language for the current pathname.
+ * Preserves detail-page slugs (e.g. /event/pep-s-musik-quiz) so users land on
+ * the same content in the new language, not the venue homepage.
+ *
+ * @param locale  current locale of the user (the one we're switching FROM)
+ * @param venue   current venue
+ * @param pathname full Next.js pathname (from usePathname()), e.g. "/lagerbaren/event/pep-s-musik-quiz"
+ */
 export function getLangSwitchHref(
   locale: Locale,
   venue: Venue,
-  currentPath: string,
+  pathname: string,
 ) {
-  // Map SV paths to EN paths and vice versa
-  const svToEn: Record<string, string> = {
-    meny: "menu",
-    lunch: "lunch",
-    galleri: "gallery",
-    berattelser: "stories",
-    event: "events",
-    boka: "book",
-    "hitta-oss": "find-us",
-  };
-  const enToSv: Record<string, string> = {
-    menu: "meny",
-    lunch: "lunch",
-    gallery: "galleri",
-    stories: "berattelser",
-    events: "event",
-    book: "boka",
-    "find-us": "hitta-oss",
-  };
+  const segments = pathname.split("/").filter(Boolean);
 
   if (locale === "sv") {
-    // Currently SV, switch to EN
-    const segments = currentPath.split("/").filter(Boolean);
-    const subpage = segments[1]; // e.g. "meny"
-    const enSubpage = subpage ? svToEn[subpage] : undefined;
-    return enSubpage ? `/en/${venue}/${enSubpage}` : `/en/${venue}`;
-  } else {
-    // Currently EN, switch to SV
-    const segments = currentPath.split("/").filter(Boolean);
-    // segments: ["en", venue, subpage?]
-    const subpage = segments[2]; // e.g. "menu"
-    const svSubpage = subpage ? enToSv[subpage] : undefined;
-    return svSubpage ? `/${venue}/${svSubpage}` : `/${venue}`;
+    // Switching SV → EN. Path shape: [venue, subpage?, slug?]
+    // (the venue layout strips off any leading slash)
+    const subpage = segments[1];
+    const slug = segments[2];
+    const enSubpage = subpage ? SV_TO_EN[subpage] : undefined;
+    if (!enSubpage) return `/en/${venue}`;
+    return slug
+      ? `/en/${venue}/${enSubpage}/${slug}`
+      : `/en/${venue}/${enSubpage}`;
   }
+
+  // Switching EN → SV. Path shape: ["en", venue, subpage?, slug?]
+  const subpage = segments[2];
+  const slug = segments[3];
+  const svSubpage = subpage ? EN_TO_SV[subpage] : undefined;
+  if (!svSubpage) return `/${venue}`;
+  return slug
+    ? `/${venue}/${svSubpage}/${slug}`
+    : `/${venue}/${svSubpage}`;
 }
 
 export function isValidVenue(venue: string): venue is Venue {
