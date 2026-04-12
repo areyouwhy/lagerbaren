@@ -7,3 +7,8 @@ facebookMasalaArt: masalaartstreetfood
 openingHoursWeekdays: 11:00 – 23:00
 openingHoursWeekend: 12:00 – 01:00
 lunchHours: 11:00 – 14:00
+googleMapsEmbed: >-
+  <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2036.4853796465243!2d18.076649300000003!3d59.308151599999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f77f697c67a3f%3A0x3f6c037e67bb7c8a!2sLagerbaren!5e0!3m2!1sen!2sse!4v1775984216820!5m2!1sen!2sse"
+  width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"></iframe>
