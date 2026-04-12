@@ -363,6 +363,11 @@ export default config({
           directory: "public/images/cms/about-lagerbaren",
           publicPath: "/images/cms/about-lagerbaren/",
         }),
+        showLogoOnHero: fields.checkbox({
+          label: "Visa logotyp på hero-bilden",
+          description: "Markera för att visa logotypen ovanpå hero-bilden istället för text-titeln. Kräver att en logotyp är uppladdad.",
+          defaultValue: false,
+        }),
         heroImagePosition: fields.select({
           label: "Hero-bildens fokuspunkt",
           description: "Välj vilken del av bilden som ska visas när den beskärs. Använd om standardmitten klipper på fel ställe.",
@@ -418,6 +423,11 @@ export default config({
           description: "Den stora bilden besökare ser först. Använd ett bra foto av en bowl eller curry.",
           directory: "public/images/cms/about-masala-art",
           publicPath: "/images/cms/about-masala-art/",
+        }),
+        showLogoOnHero: fields.checkbox({
+          label: "Visa logotyp på hero-bilden",
+          description: "Markera för att visa logotypen ovanpå hero-bilden istället för text-titeln. Kräver att en logotyp är uppladdad.",
+          defaultValue: false,
         }),
         heroImagePosition: fields.select({
           label: "Hero-bildens fokuspunkt",

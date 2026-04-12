@@ -7,6 +7,7 @@ export function PageHero({
   backgroundImage,
   backgroundAlt,
   backgroundPosition,
+  logoOverlay,
 }: {
   title: string;
   subtitle?: string;
@@ -15,6 +16,8 @@ export function PageHero({
   backgroundAlt?: string;
   /** CSS object-position value, e.g. "center", "top", "bottom right". */
   backgroundPosition?: string;
+  /** When set, render this logo image instead of the H1 title text. */
+  logoOverlay?: string | null;
 }) {
   if (backgroundImage) {
     return (
@@ -30,12 +33,21 @@ export function PageHero({
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/80" />
         <div className="relative z-10 flex h-full flex-col items-center justify-end px-4 pb-16 text-center">
-          <h1
-            className="text-5xl font-bold tracking-tight drop-shadow-lg md:text-7xl"
-            style={accentColor ? { color: accentColor } : { color: "white" }}
-          >
-            {title}
-          </h1>
+          {logoOverlay ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={logoOverlay}
+              alt={title}
+              className="h-28 w-auto drop-shadow-2xl md:h-40"
+            />
+          ) : (
+            <h1
+              className="text-5xl font-bold tracking-tight drop-shadow-lg md:text-7xl"
+              style={accentColor ? { color: accentColor } : { color: "white" }}
+            >
+              {title}
+            </h1>
+          )}
           {subtitle && (
             <p className="mt-4 max-w-2xl text-lg text-zinc-100 drop-shadow md:text-xl">
               {subtitle}

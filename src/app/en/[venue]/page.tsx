@@ -35,6 +35,7 @@ export default async function VenueHomeEN({
         backgroundImage={heroImage ?? undefined}
         backgroundAlt={`${brand.name} — ${heroSubtitle}`}
         backgroundPosition={about?.heroImagePosition}
+        logoOverlay={about?.showLogoOnHero ? about?.logo : null}
       />
 
       {ambienceImages.length > 0 && (
