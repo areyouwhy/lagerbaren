@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# scraped reference content (source files for migration, not for shipping)
+/scraped-content
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

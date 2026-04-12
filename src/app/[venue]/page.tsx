@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
+import { AmbienceStrip } from "@/components/ambience-strip";
 import { BRAND } from "@/lib/constants";
 import { getDict, type Venue } from "@/lib/i18n";
-import { getVenueEvents, splitEvents } from "@/lib/venue-content";
+import { getAmbienceImages, getVenueEvents, splitEvents } from "@/lib/venue-content";
 import { UpcomingEventList } from "@/components/event-list";
 import { reader } from "@/lib/reader";
 
@@ -23,10 +24,22 @@ export default async function VenueHome({
   const heroTitle = lagerAbout?.heroTitle ?? masalaAbout?.heroTitle ?? brand.name;
   const heroSubtitle = lagerAbout?.heroSubtitle ?? masalaAbout?.heroSubtitle ?? brand.tagline.sv;
   const description = lagerAbout?.description ?? masalaAbout?.description ?? "";
+  const heroImage = lagerAbout?.heroImage ?? masalaAbout?.heroImage ?? null;
+  const ambienceImages = await getAmbienceImages(v);
 
   return (
     <>
-      <PageHero title={heroTitle} subtitle={heroSubtitle} accentColor={brand.accent} />
+      <PageHero
+        title={heroTitle}
+        subtitle={heroSubtitle}
+        accentColor={brand.accent}
+        backgroundImage={heroImage ?? undefined}
+        backgroundAlt={`${brand.name} — ${heroSubtitle}`}
+      />
+
+      {ambienceImages.length > 0 && (
+        <AmbienceStrip images={ambienceImages} alt={`${brand.name} — interiör och mat`} />
+      )}
 
       <div className="mx-auto max-w-4xl px-4 py-12">
         <p className="mb-12 text-lg leading-relaxed text-zinc-300">

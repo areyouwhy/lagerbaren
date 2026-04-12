@@ -92,6 +92,15 @@ export async function getSiteInfo() {
   return reader.singletons.siteInfo.read();
 }
 
+export async function getAmbienceImages(venue: Venue) {
+  const items = await reader.collections.ambienceImages.all();
+  return items
+    .filter((i) => i.entry.venue === venue)
+    .sort((a, b) => (a.entry.sortOrder ?? 0) - (b.entry.sortOrder ?? 0))
+    .map((i) => i.entry.image)
+    .filter((src): src is string => typeof src === "string" && src.length > 0);
+}
+
 export async function getFestvaningInfo() {
   return reader.singletons.festvaning.read();
 }

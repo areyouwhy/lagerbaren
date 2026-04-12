@@ -13,7 +13,8 @@ export default config({
     menuLagerbaren: collection({
       label: "Meny Lagerbaren",
       slugField: "name",
-      path: "src/content/menu-lagerbaren/*",
+      path: "src/content/menu-lagerbaren/*/",
+      format: "json",
       schema: {
         name: fields.slug({ name: { label: "Namn" } }),
         description: fields.text({ label: "Beskrivning", multiline: true }),
@@ -36,7 +37,8 @@ export default config({
     menuMasalaArt: collection({
       label: "Meny Masala Art",
       slugField: "name",
-      path: "src/content/menu-masala-art/*",
+      path: "src/content/menu-masala-art/*/",
+      format: "json",
       schema: {
         name: fields.slug({ name: { label: "Namn" } }),
         description: fields.text({ label: "Beskrivning", multiline: true }),
@@ -69,7 +71,8 @@ export default config({
     menuLunch: collection({
       label: "Lunchmeny",
       slugField: "name",
-      path: "src/content/menu-lunch/*",
+      path: "src/content/menu-lunch/*/",
+      format: "json",
       schema: {
         name: fields.slug({ name: { label: "Namn" } }),
         description: fields.text({ label: "Beskrivning", multiline: true }),
@@ -98,7 +101,8 @@ export default config({
     menuDrinks: collection({
       label: "Dryckesmeny",
       slugField: "name",
-      path: "src/content/menu-drinks/*",
+      path: "src/content/menu-drinks/*/",
+      format: "json",
       schema: {
         name: fields.slug({ name: { label: "Namn" } }),
         description: fields.text({ label: "Beskrivning", multiline: true }),
@@ -120,10 +124,38 @@ export default config({
         sortOrder: fields.integer({ label: "Sorteringsordning", defaultValue: 0 }),
       },
     }),
+    ambienceImages: collection({
+      label: "Bildremsa",
+      slugField: "title",
+      path: "src/content/ambience-images/*/",
+      format: "json",
+      schema: {
+        title: fields.slug({
+          name: { label: "Titel (intern referens — visas inte på sidan)" },
+        }),
+        image: fields.image({
+          label: "Bild",
+          description: "Foto för bildremsan på startsidan.",
+          directory: "public/images/cms/ambience",
+          publicPath: "/images/cms/ambience/",
+          validation: { isRequired: true },
+        }),
+        venue: fields.select({
+          label: "Plats",
+          options: [
+            { label: "Lagerbaren", value: "lagerbaren" },
+            { label: "Masala Art", value: "masala-art" },
+          ],
+          defaultValue: "lagerbaren",
+        }),
+        sortOrder: fields.integer({ label: "Sorteringsordning (lägre först)", defaultValue: 0 }),
+      },
+    }),
     events: collection({
       label: "Event",
       slugField: "title",
-      path: "src/content/events/*",
+      path: "src/content/events/*/",
+      format: "json",
       schema: {
         title: fields.slug({ name: { label: "Titel" } }),
         description: fields.text({ label: "Beskrivning", multiline: true }),
@@ -171,7 +203,8 @@ export default config({
   singletons: {
     siteInfo: singleton({
       label: "Kontaktinformation",
-      path: "src/content/site-info",
+      path: "src/content/site-info/",
+      format: "json",
       schema: {
         addressLine1: fields.text({ label: "Adress rad 1", defaultValue: "Södermalm, Stockholm" }),
         addressLine2: fields.text({ label: "Adress rad 2" }),
@@ -188,7 +221,8 @@ export default config({
     }),
     festvaning: singleton({
       label: "Festväningen",
-      path: "src/content/festvaning",
+      path: "src/content/festvaning/",
+      format: "json",
       schema: {
         title: fields.text({ label: "Titel", defaultValue: "Festväningen" }),
         description: fields.text({ label: "Beskrivning", multiline: true, defaultValue: "Vår festväning rymmer upp till 60 personer och är perfekt för födelsedagar, firmafester, release-fester och andra tillställningar." }),
@@ -202,10 +236,17 @@ export default config({
     }),
     aboutLagerbaren: singleton({
       label: "Om Lagerbaren",
-      path: "src/content/about-lagerbaren",
+      path: "src/content/about-lagerbaren/",
+      format: "json",
       schema: {
         heroTitle: fields.text({ label: "Hero-titel", defaultValue: "Lagerbaren" }),
         heroSubtitle: fields.text({ label: "Hero-undertitel", defaultValue: "Södermalms sportbar sedan 2005" }),
+        heroImage: fields.image({
+          label: "Hero-bild (stor bild i toppen av sidan)",
+          description: "Den stora bilden besökare ser först. Använd ett bra foto av baren eller maten.",
+          directory: "public/images/cms/about-lagerbaren",
+          publicPath: "/images/cms/about-lagerbaren/",
+        }),
         description: fields.text({ label: "Beskrivning", multiline: true, defaultValue: "Lagerbaren är Södermalms sportbar med stort utbud av fatöl, rom och whisky. Vi visar alla stora sportevenemang på våra storbilds-TV och projektorer. Välkommen till oss för lunch, after work eller en helkväll med god mat och dryck." }),
         sportText: fields.text({ label: "Sport-text", multiline: true, defaultValue: "Vi visar alla stora sportevenemang — fotboll, hockey, basket, MMA och mer. Stolt sponsor av Hammarbys sportlag." }),
         quizText: fields.text({ label: "Quiz-text", defaultValue: "Pubquiz varje onsdag kl 19:00. Samla laget och kom!" }),
@@ -213,10 +254,17 @@ export default config({
     }),
     aboutMasalaArt: singleton({
       label: "Om Masala Art",
-      path: "src/content/about-masala-art",
+      path: "src/content/about-masala-art/",
+      format: "json",
       schema: {
         heroTitle: fields.text({ label: "Hero-titel", defaultValue: "Masala Art" }),
         heroSubtitle: fields.text({ label: "Hero-undertitel", defaultValue: "Indisk & Bengalisk mat på Södermalm" }),
+        heroImage: fields.image({
+          label: "Hero-bild (stor bild i toppen av sidan)",
+          description: "Den stora bilden besökare ser först. Använd ett bra foto av en bowl eller curry.",
+          directory: "public/images/cms/about-masala-art",
+          publicPath: "/images/cms/about-masala-art/",
+        }),
         description: fields.text({ label: "Beskrivning", multiline: true, defaultValue: "Masala Art serverar autentisk indisk och bengalisk mat i hjärtat av Södermalm. Våra bowls och traditionella rätter lagas från grunden med färska kryddor och ingredienser." }),
       },
     }),
