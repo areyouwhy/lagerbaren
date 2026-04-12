@@ -55,6 +55,8 @@ const dict = {
     },
     home: {
       upcomingEvents: "Kommande event",
+      moreEvents: "Fler event",
+      nextEvent: "Nästa event",
       sport: "Sport",
       quiz: "Pubquiz",
       readMore: "Läs mer",
@@ -169,6 +171,8 @@ const dict = {
     },
     home: {
       upcomingEvents: "Upcoming events",
+      moreEvents: "More events",
+      nextEvent: "Next event",
       sport: "Sports",
       quiz: "Pub quiz",
       readMore: "Read more",

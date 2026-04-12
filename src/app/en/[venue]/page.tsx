@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { AmbienceStrip } from "@/components/ambience-strip";
+import { FeaturedEventCard } from "@/components/featured-event-card";
 import { BRAND } from "@/lib/constants";
 import { getDict, type Venue } from "@/lib/i18n";
 import { getFeaturedAmbienceImages, getVenueAbout, getVenueEvents, splitEvents } from "@/lib/venue-content";
@@ -17,14 +18,20 @@ export default async function VenueHomeEN({
   const v = venue as Venue;
   const t = getDict(LOCALE);
   const brand = BRAND[v];
-  const events = await getVenueEvents(v, LOCALE);
 
   const about = await getVenueAbout(v, LOCALE);
   const heroTitle = about?.heroTitle || brand.name;
   const heroSubtitle = about?.heroSubtitle || brand.tagline.en;
   const description = about?.description || "";
   const heroImage = about?.heroImage ?? null;
+
   const ambienceImages = await getFeaturedAmbienceImages(v);
+  const stripImages = ambienceImages.slice(0, 3);
+
+  const events = await getVenueEvents(v, LOCALE);
+  const { upcoming } = splitEvents(events);
+  const featuredEvent = upcoming[0] ?? null;
+  const otherEvents = upcoming.slice(1, 4);
 
   return (
     <>
@@ -38,11 +45,22 @@ export default async function VenueHomeEN({
         logoOverlay={about?.showLogoOnHero ? about?.logo : null}
       />
 
-      {ambienceImages.length > 0 && (
-        <AmbienceStrip images={ambienceImages} alt={`${brand.name} — interior and food`} />
+      {featuredEvent && (
+        <FeaturedEventCard
+          event={featuredEvent}
+          fallbackImage={ambienceImages[0] ?? null}
+          href={`/en/${venue}/events/${featuredEvent.slug}`}
+          accentColor={brand.accent}
+          eyebrow={t.home.nextEvent}
+          recurringLabel={t.events.recurring}
+        />
       )}
 
-      <div className="mx-auto max-w-4xl px-4 py-12">
+      {stripImages.length > 0 && (
+        <AmbienceStrip images={stripImages} alt={`${brand.name} — interior and food`} />
+      )}
+
+      <div className="mx-auto max-w-4xl px-4 py-16">
         <p className="mb-12 text-lg leading-relaxed text-zinc-300">{description}</p>
 
         {v === "lagerbaren" && about && (
@@ -58,15 +76,12 @@ export default async function VenueHomeEN({
           </div>
         )}
 
-        {(() => {
-          const { upcoming } = splitEvents(events);
-          return upcoming.length > 0 ? (
-            <section className="mb-12">
-              <h2 className="mb-4 text-2xl font-bold text-white">{t.home.upcomingEvents}</h2>
-              <UpcomingEventList events={upcoming.slice(0, 5)} eventPathBase={`/en/${venue}/events`} />
-            </section>
-          ) : null;
-        })()}
+        {otherEvents.length > 0 && (
+          <section className="mb-12">
+            <h2 className="mb-4 text-2xl font-bold text-white">{t.home.moreEvents}</h2>
+            <UpcomingEventList events={otherEvents} eventPathBase={`/en/${venue}/events`} />
+          </section>
+        )}
 
         <div className="flex flex-wrap gap-4">
           <Link
