@@ -23,14 +23,20 @@ export default config({
           label: "Kategori",
           options: [
             { label: "Förrätt", value: "forratt" },
-            { label: "Varmrätt", value: "varmratt" },
+            { label: "Pizza", value: "pizza" },
+            { label: "Pasta", value: "pasta" },
+            { label: "Kött", value: "kott" },
+            { label: "Plankstek", value: "plankstek" },
+            { label: "Fisk", value: "fisk" },
             { label: "Burgare", value: "burgare" },
             { label: "Sallad", value: "sallad" },
+            { label: "Varmrätt", value: "varmratt" },
             { label: "Tillbehör", value: "tillbehor" },
             { label: "Dessert", value: "dessert" },
           ],
           defaultValue: "varmratt",
         }),
+        vegetarian: fields.checkbox({ label: "Vegetarisk", defaultValue: false }),
         sortOrder: fields.integer({ label: "Sorteringsordning", defaultValue: 0 }),
       },
     }),
@@ -46,10 +52,12 @@ export default config({
         category: fields.select({
           label: "Kategori",
           options: [
+            { label: "Förrätt", value: "forratt" },
             { label: "Bowl", value: "bowl" },
-            { label: "Traditionell rätt", value: "traditionell" },
-            { label: "Bengali Special", value: "bengali" },
             { label: "Tandoori", value: "tandoori" },
+            { label: "Klassisk gryta", value: "traditionell" },
+            { label: "Bengali Special", value: "bengali" },
+            { label: "Vegetarisk", value: "vegetarisk" },
             { label: "Sides & Naan", value: "sides" },
             { label: "Dessert", value: "dessert" },
           ],
@@ -217,6 +225,48 @@ export default config({
         openingHoursWeekend: fields.text({ label: "Öppettider helg", defaultValue: "12:00 – 01:00" }),
         lunchHours: fields.text({ label: "Lunchtider", defaultValue: "11:00 – 14:00" }),
         googleMapsEmbed: fields.text({ label: "Google Maps Embed URL", multiline: true }),
+      },
+    }),
+    lunchInfo: singleton({
+      label: "Lunchinfo",
+      path: "src/content/lunch-info/",
+      format: "json",
+      schema: {
+        priceWeekly: fields.text({
+          label: "Pris veckans lunch",
+          defaultValue: "145 kr",
+        }),
+        includesText: fields.text({
+          label: "Vad ingår",
+          multiline: true,
+          defaultValue: "Inkl. måltidsdryck, två sorters bröd, sallad, vitlöksdressing & kaffe",
+        }),
+        favoritbiffenTitle: fields.text({
+          label: "Favoritbiffen — titel",
+          defaultValue: "Favoritbiffen",
+        }),
+        favoritbiffenDescription: fields.text({
+          label: "Favoritbiffen — beskrivning",
+          multiline: true,
+          defaultValue: "Ryggbiff med pommes, rödvinssås & bearnaise. Inkl. samma tillbehör som veckans lunch.",
+        }),
+        favoritbiffenPrice: fields.text({
+          label: "Favoritbiffen — pris",
+          defaultValue: "165 kr",
+        }),
+        hoursLagerbaren: fields.text({
+          label: "Lunchtider Lagerbaren",
+          defaultValue: "Mån–Fre 11:00–14:30",
+        }),
+        hoursMasalaArt: fields.text({
+          label: "Lunchtider Masala Art",
+          defaultValue: "Mån–Fre 11:00–14:30",
+        }),
+        closedMessage: fields.text({
+          label: "Stängt-meddelande (helger)",
+          multiline: true,
+          defaultValue: "Lunchen är stängd på helgen — välkommen tillbaka på måndag.",
+        }),
       },
     }),
     festvaning: singleton({

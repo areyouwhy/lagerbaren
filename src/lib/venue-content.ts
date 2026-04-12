@@ -25,11 +25,34 @@ export async function getVenueDrinkSections() {
   return groupByCategory(sorted, DRINK_CATEGORIES);
 }
 
-export async function getVenueLunchItems(venue: Venue) {
+export type Weekday = "mon" | "tue" | "wed" | "thu" | "fri";
+const WEEKDAYS: readonly Weekday[] = ["mon", "tue", "wed", "thu", "fri"] as const;
+
+export function getTodayWeekday(): Weekday | null {
+  // 0 = Sun, 1 = Mon, ..., 6 = Sat in JS Date
+  const day = new Date().getDay();
+  if (day < 1 || day > 5) return null; // weekend
+  return WEEKDAYS[day - 1];
+}
+
+export async function getAllVenueLunchItems(venue: Venue) {
   const items = await reader.collections.menuLunch.all();
   return items
     .filter((i) => i.entry.brand === venue)
     .sort((a, b) => (a.entry.sortOrder ?? 0) - (b.entry.sortOrder ?? 0));
+}
+
+export async function getVenueLunchItems(venue: Venue, weekday?: Weekday | null) {
+  const all = await getAllVenueLunchItems(venue);
+  if (!weekday) return all;
+  return all.filter((i) => {
+    const days = (i.entry.weekday ?? []) as readonly string[];
+    return days.includes(weekday);
+  });
+}
+
+export async function getLunchInfo() {
+  return reader.singletons.lunchInfo.read();
 }
 
 export type EventEntry = Awaited<ReturnType<typeof reader.collections.events.all>>[number];
@@ -105,22 +128,29 @@ export async function getFestvaningInfo() {
   return reader.singletons.festvaning.read();
 }
 
-// Category label maps
+// Category label maps — order here defines on-page section order
 const LAGERBAREN_CATEGORIES: Record<string, string> = {
-  forratt: "Förrätt",
-  varmratt: "Varmrätt",
+  forratt: "Förrätter",
+  pizza: "Pizza",
+  pasta: "Pasta",
+  kott: "Kött",
+  plankstek: "Plankstek",
+  fisk: "Fisk",
   burgare: "Burgare",
   sallad: "Sallad",
+  varmratt: "Varmrätt",
   tillbehor: "Tillbehör",
   dessert: "Dessert",
 };
 
 const MASALA_CATEGORIES: Record<string, string> = {
-  bowl: "Bowls",
-  traditionell: "Traditionella rätter",
-  bengali: "Bengali Special",
-  tandoori: "Tandoori",
-  sides: "Sides & Naan",
+  forratt: "Förrätter",
+  bowl: "Brilliant Bengali Bowls",
+  tandoori: "Från Grillen / Tandoori",
+  traditionell: "Klassiska Grytor",
+  bengali: "Kökets Rekommendationer",
+  vegetarisk: "Vegetariska Rätter",
+  sides: "Naan & Sides",
   dessert: "Dessert",
 };
 
@@ -154,8 +184,15 @@ function groupByCategory(
       price: item.entry.price,
     });
   }
-  return Object.entries(grouped).map(([key, items]) => ({
-    category: labels[key] ?? key,
-    items,
-  }));
+  // Iterate in label order so sections render in the canonical order,
+  // not the random order categories happened to appear in items.
+  // Tail with any unknown categories so nothing is silently dropped.
+  const sections: MenuSection[] = [];
+  for (const key of Object.keys(labels)) {
+    if (grouped[key]) sections.push({ category: labels[key], items: grouped[key] });
+  }
+  for (const key of Object.keys(grouped)) {
+    if (!labels[key]) sections.push({ category: key, items: grouped[key] });
+  }
+  return sections;
 }

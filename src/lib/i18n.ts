@@ -6,6 +6,7 @@ const dict = {
     nav: {
       home: "Hem",
       menu: "Meny",
+      lunch: "Lunch",
       events: "Event",
       book: "Boka bord",
       findUs: "Hitta oss",
@@ -34,6 +35,26 @@ const dict = {
       lunch: "Lunch",
       lunchHours: "Mån–Fre 11:00–14:00",
       emptyState: "Menyn uppdateras snart. Kom tillbaka!",
+    },
+    lunch: {
+      title: "Lunch",
+      todayHeading: "Dagens lunch",
+      weekdayLong: {
+        mon: "Måndag",
+        tue: "Tisdag",
+        wed: "Onsdag",
+        thu: "Torsdag",
+        fri: "Fredag",
+      },
+      weekdayShort: {
+        mon: "Mån",
+        tue: "Tis",
+        wed: "Ons",
+        thu: "Tor",
+        fri: "Fre",
+      },
+      weekHeading: "Hela veckan",
+      noItemsToday: "Inga lunchrätter inlagda för idag.",
     },
     events: {
       title: "Event",
@@ -82,6 +103,7 @@ const dict = {
     nav: {
       home: "Home",
       menu: "Menu",
+      lunch: "Lunch",
       events: "Events",
       book: "Book a table",
       findUs: "Find us",
@@ -110,6 +132,26 @@ const dict = {
       lunch: "Lunch",
       lunchHours: "Mon–Fri 11:00–14:00",
       emptyState: "Menu coming soon!",
+    },
+    lunch: {
+      title: "Lunch",
+      todayHeading: "Today's lunch",
+      weekdayLong: {
+        mon: "Monday",
+        tue: "Tuesday",
+        wed: "Wednesday",
+        thu: "Thursday",
+        fri: "Friday",
+      },
+      weekdayShort: {
+        mon: "Mon",
+        tue: "Tue",
+        wed: "Wed",
+        thu: "Thu",
+        fri: "Fri",
+      },
+      weekHeading: "All week",
+      noItemsToday: "No lunch dishes scheduled for today.",
     },
     events: {
       title: "Events",
@@ -167,12 +209,13 @@ export function getVenueNav(locale: Locale, venue: Venue) {
   const prefix = locale === "sv" ? `/${venue}` : `/en/${venue}`;
   const paths =
     locale === "sv"
-      ? { menu: "meny", events: "event", book: "boka", findUs: "hitta-oss" }
-      : { menu: "menu", events: "events", book: "book", findUs: "find-us" };
+      ? { menu: "meny", lunch: "lunch", events: "event", book: "boka", findUs: "hitta-oss" }
+      : { menu: "menu", lunch: "lunch", events: "events", book: "book", findUs: "find-us" };
 
   return [
     { label: t.nav.home, href: prefix },
     { label: t.nav.menu, href: `${prefix}/${paths.menu}` },
+    { label: t.nav.lunch, href: `${prefix}/${paths.lunch}` },
     { label: t.nav.events, href: `${prefix}/${paths.events}` },
     { label: t.nav.book, href: `${prefix}/${paths.book}` },
     { label: t.nav.findUs, href: `${prefix}/${paths.findUs}` },
@@ -187,12 +230,14 @@ export function getLangSwitchHref(
   // Map SV paths to EN paths and vice versa
   const svToEn: Record<string, string> = {
     meny: "menu",
+    lunch: "lunch",
     event: "events",
     boka: "book",
     "hitta-oss": "find-us",
   };
   const enToSv: Record<string, string> = {
     menu: "meny",
+    lunch: "lunch",
     events: "event",
     book: "boka",
     "find-us": "hitta-oss",

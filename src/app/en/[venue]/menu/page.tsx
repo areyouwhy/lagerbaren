@@ -2,7 +2,7 @@ import { PageHero } from "@/components/page-hero";
 import { MenuList } from "@/components/menu-list";
 import { BRAND } from "@/lib/constants";
 import { getDict, type Venue } from "@/lib/i18n";
-import { getVenueMenuSections, getVenueDrinkSections, getVenueLunchItems } from "@/lib/venue-content";
+import { getVenueMenuSections, getVenueDrinkSections } from "@/lib/venue-content";
 
 export default async function VenueMenuPageEN({
   params,
@@ -16,7 +16,6 @@ export default async function VenueMenuPageEN({
 
   const foodSections = await getVenueMenuSections(v);
   const drinkSections = v === "lagerbaren" ? await getVenueDrinkSections() : [];
-  const lunchItems = await getVenueLunchItems(v);
 
   return (
     <>
@@ -28,26 +27,6 @@ export default async function VenueMenuPageEN({
           <MenuList sections={foodSections} />
         ) : (
           <p className="mb-8 text-zinc-400">{t.menu.emptyState}</p>
-        )}
-
-        {lunchItems.length > 0 && (
-          <div className="mt-12">
-            <h2 className="mb-2 text-2xl font-bold text-white">{t.menu.lunch}</h2>
-            <p className="mb-6 text-sm text-zinc-500">{t.menu.lunchHours}</p>
-            <div className="space-y-4">
-              {lunchItems.map((item) => (
-                <div key={item.slug} className="flex justify-between gap-4">
-                  <div>
-                    <h3 className="font-medium text-white">{item.entry.name}</h3>
-                    {item.entry.description && (
-                      <p className="text-sm text-zinc-400">{item.entry.description}</p>
-                    )}
-                  </div>
-                  <span className="shrink-0 text-sm text-zinc-300">{item.entry.price}</span>
-                </div>
-              ))}
-            </div>
-          </div>
         )}
 
         {drinkSections.length > 0 && (
