@@ -32,7 +32,7 @@ export function PageHero({
           style={backgroundPosition ? { objectPosition: backgroundPosition } : undefined}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/80" />
-        <div className="relative z-10 flex h-full flex-col items-center justify-end px-4 pb-16 text-center">
+        <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
           {logoOverlay ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -49,7 +49,7 @@ export function PageHero({
             </h1>
           )}
           {subtitle && (
-            <p className="mt-4 max-w-2xl text-lg text-zinc-100 drop-shadow md:text-xl">
+            <p className="mt-8 max-w-2xl text-lg text-zinc-100 drop-shadow md:text-xl">
               {subtitle}
             </p>
           )}
