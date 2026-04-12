@@ -115,6 +115,35 @@ export async function getSiteInfo() {
   return reader.singletons.siteInfo.read();
 }
 
+export type StoryEntry = Awaited<ReturnType<typeof reader.collections.stories.all>>[number];
+
+export async function getVenueStories(venue: Venue) {
+  const all = await reader.collections.stories.all();
+  return all
+    .filter((s) => s.entry.brand === venue || s.entry.brand === "both")
+    .sort((a, b) => (a.entry.sortOrder ?? 0) - (b.entry.sortOrder ?? 0));
+}
+
+export async function getFeaturedStories(venue: Venue) {
+  const stories = await getVenueStories(venue);
+  return stories.filter((s) => s.entry.featured);
+}
+
+export async function getStory(slug: string) {
+  return reader.collections.stories.read(slug);
+}
+
+const STORY_CATEGORIES: Record<string, string> = {
+  sport: "Sport & Fanklubbar",
+  sponsorship: "Sponsorskap",
+  history: "Vår historia",
+  other: "Annat",
+};
+
+export function getStoryCategoryLabel(category: string): string {
+  return STORY_CATEGORIES[category] ?? category;
+}
+
 export async function getAmbienceImages(venue: Venue) {
   const items = await reader.collections.ambienceImages.all();
   return items

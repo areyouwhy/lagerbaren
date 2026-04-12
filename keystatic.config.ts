@@ -132,6 +132,49 @@ export default config({
         sortOrder: fields.integer({ label: "Sorteringsordning", defaultValue: 0 }),
       },
     }),
+    stories: collection({
+      label: "Berättelser",
+      slugField: "title",
+      path: "src/content/stories/*/",
+      format: "json",
+      schema: {
+        title: fields.slug({
+          name: { label: "Titel" },
+        }),
+        subtitle: fields.text({ label: "Underrubrik" }),
+        heroImage: fields.image({
+          label: "Hero-bild (valfri)",
+          description: "Bild som visas i toppen av berättelsen.",
+          directory: "public/images/cms/stories",
+          publicPath: "/images/cms/stories/",
+        }),
+        body: fields.text({ label: "Brödtext", multiline: true }),
+        brand: fields.select({
+          label: "Plats",
+          options: [
+            { label: "Lagerbaren", value: "lagerbaren" },
+            { label: "Masala Art", value: "masala-art" },
+            { label: "Båda", value: "both" },
+          ],
+          defaultValue: "lagerbaren",
+        }),
+        category: fields.select({
+          label: "Typ",
+          options: [
+            { label: "Sport / Fanklubb", value: "sport" },
+            { label: "Sponsorskap", value: "sponsorship" },
+            { label: "Vår historia", value: "history" },
+            { label: "Annat", value: "other" },
+          ],
+          defaultValue: "other",
+        }),
+        featured: fields.checkbox({
+          label: "Visa på startsidan (utvald)",
+          defaultValue: false,
+        }),
+        sortOrder: fields.integer({ label: "Sorteringsordning", defaultValue: 0 }),
+      },
+    }),
     ambienceImages: collection({
       label: "Bildremsa",
       slugField: "title",
