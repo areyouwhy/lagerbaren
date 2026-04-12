@@ -279,8 +279,9 @@ export function getVenueNav(locale: Locale, venue: Venue) {
       ? { menu: "meny", lunch: "lunch", gallery: "galleri", stories: "berattelser", events: "event", book: "boka", findUs: "hitta-oss" }
       : { menu: "menu", lunch: "lunch", gallery: "gallery", stories: "stories", events: "events", book: "book", findUs: "find-us" };
 
+  // Home is reachable via the logo/brand link in the header, so it's not
+  // duplicated in the nav itself.
   return [
-    { label: t.nav.home, href: prefix },
     { label: t.nav.menu, href: `${prefix}/${paths.menu}` },
     { label: t.nav.lunch, href: `${prefix}/${paths.lunch}` },
     { label: t.nav.gallery, href: `${prefix}/${paths.gallery}` },
