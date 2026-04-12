@@ -6,12 +6,15 @@ export function PageHero({
   accentColor,
   backgroundImage,
   backgroundAlt,
+  backgroundPosition,
 }: {
   title: string;
   subtitle?: string;
   accentColor?: string;
   backgroundImage?: string;
   backgroundAlt?: string;
+  /** CSS object-position value, e.g. "center", "top", "bottom right". */
+  backgroundPosition?: string;
 }) {
   if (backgroundImage) {
     return (
@@ -23,6 +26,7 @@ export function PageHero({
           priority
           sizes="100vw"
           className="object-cover"
+          style={backgroundPosition ? { objectPosition: backgroundPosition } : undefined}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/80" />
         <div className="relative z-10 flex h-full flex-col items-center justify-end px-4 pb-16 text-center">

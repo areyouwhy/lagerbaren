@@ -380,6 +380,7 @@ export async function getVenueAbout(venue: Venue, locale: Locale) {
     heroTitle: localize(d.heroTitle as LocalizedString, locale),
     heroSubtitle: localize(d.heroSubtitle as LocalizedString, locale),
     heroImage: (d.heroImage as string | null) ?? null,
+    heroImagePosition: (d.heroImagePosition as string) || "center",
     description: localize(d.description as LocalizedString, locale),
     sportText: localize((d.sportText as LocalizedString) ?? null, locale),
     quizText: localize((d.quizText as LocalizedString) ?? null, locale),

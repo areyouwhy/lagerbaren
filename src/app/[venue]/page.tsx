@@ -34,6 +34,7 @@ export default async function VenueHome({
         accentColor={brand.accent}
         backgroundImage={heroImage ?? undefined}
         backgroundAlt={`${brand.name} — ${heroSubtitle}`}
+        backgroundPosition={about?.heroImagePosition}
       />
 
       {ambienceImages.length > 0 && (
