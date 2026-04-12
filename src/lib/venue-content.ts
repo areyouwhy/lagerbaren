@@ -64,6 +64,10 @@ export async function getVenueEvents(venue: Venue) {
   );
 }
 
+export async function getEvent(slug: string) {
+  return reader.collections.events.read(slug);
+}
+
 function getToday() {
   return new Date().toISOString().split("T")[0];
 }

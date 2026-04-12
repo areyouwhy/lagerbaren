@@ -79,6 +79,11 @@ const dict = {
       featured: "Utvalt",
       interested: "Intresserad?",
       sendInquiry: "Skicka bokningsförfrågan",
+      backToList: "Tillbaka till alla event",
+      bookHere: "Boka här",
+      whenLabel: "När",
+      whereLabel: "Plats",
+      everyWeek: "Varje vecka",
     },
     book: {
       title: "Boka bord",
@@ -188,6 +193,11 @@ const dict = {
       featured: "Featured",
       interested: "Interested?",
       sendInquiry: "Send booking inquiry",
+      backToList: "Back to all events",
+      bookHere: "Book here",
+      whenLabel: "When",
+      whereLabel: "Where",
+      everyWeek: "Every week",
     },
     book: {
       title: "Book a table",

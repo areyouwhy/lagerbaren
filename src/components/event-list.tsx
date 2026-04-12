@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import type { EventEntry } from "@/lib/venue-content";
 
@@ -10,13 +11,14 @@ const CATEGORY_ICONS: Record<string, string> = {
   ovrigt: "📌",
 };
 
-function EventCard({ event }: { event: EventEntry }) {
+function EventCard({ event, eventPathBase }: { event: EventEntry; eventPathBase: string }) {
   const { entry } = event;
   const icon = CATEGORY_ICONS[entry.category] ?? "📌";
 
   return (
-    <div
-      className={`flex items-center justify-between rounded-lg border bg-zinc-900 px-4 py-3 ${
+    <Link
+      href={`${eventPathBase}/${event.slug}`}
+      className={`flex items-center justify-between rounded-lg border bg-zinc-900 px-4 py-3 transition-colors hover:border-white/30 hover:bg-zinc-800 ${
         entry.featured
           ? "border-gold/40 ring-1 ring-gold/20"
           : "border-white/10"
@@ -51,7 +53,7 @@ function EventCard({ event }: { event: EventEntry }) {
         )}
         {entry.time && <p>{entry.time}</p>}
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -59,10 +61,12 @@ export function EventList({
   upcoming,
   past,
   pastLabel,
+  eventPathBase,
 }: {
   upcoming: EventEntry[];
   past: EventEntry[];
   pastLabel: string;
+  eventPathBase: string;
 }) {
   const [showPast, setShowPast] = useState(false);
 
@@ -71,7 +75,7 @@ export function EventList({
       {upcoming.length > 0 ? (
         <div className="space-y-3">
           {upcoming.map((event) => (
-            <EventCard key={event.slug} event={event} />
+            <EventCard key={event.slug} event={event} eventPathBase={eventPathBase} />
           ))}
         </div>
       ) : null}
@@ -95,7 +99,7 @@ export function EventList({
           {showPast && (
             <div className="mt-3 space-y-3 opacity-60">
               {past.map((event) => (
-                <EventCard key={event.slug} event={event} />
+                <EventCard key={event.slug} event={event} eventPathBase={eventPathBase} />
               ))}
             </div>
           )}
@@ -105,11 +109,17 @@ export function EventList({
   );
 }
 
-export function UpcomingEventList({ events }: { events: EventEntry[] }) {
+export function UpcomingEventList({
+  events,
+  eventPathBase,
+}: {
+  events: EventEntry[];
+  eventPathBase: string;
+}) {
   return (
     <div className="space-y-3">
       {events.map((event) => (
-        <EventCard key={event.slug} event={event} />
+        <EventCard key={event.slug} event={event} eventPathBase={eventPathBase} />
       ))}
     </div>
   );

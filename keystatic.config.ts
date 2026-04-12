@@ -209,10 +209,29 @@ export default config({
       format: "json",
       schema: {
         title: fields.slug({ name: { label: "Titel" } }),
-        description: fields.text({ label: "Beskrivning", multiline: true }),
+        description: fields.text({ label: "Kort beskrivning (visas i listan)", multiline: true }),
+        body: fields.text({
+          label: "Långa text (visas på eventsidan)",
+          description: "Skriv flera stycken med blanka rader emellan.",
+          multiline: true,
+        }),
+        heroImage: fields.image({
+          label: "Hero-bild (valfri)",
+          description: "Stor bild i toppen av eventsidan.",
+          directory: "public/images/cms/events",
+          publicPath: "/images/cms/events/",
+        }),
         date: fields.date({ label: "Datum" }),
         endDate: fields.date({ label: "Slutdatum (valfritt, för flerdagars-event)" }),
         time: fields.text({ label: "Tid" }),
+        location: fields.text({
+          label: "Plats (om annan än vårt vanliga ställe)",
+          description: "Lämna tomt för att använda Lagerbarens vanliga adress.",
+        }),
+        bookingUrl: fields.text({
+          label: "Bokningslänk (valfri)",
+          description: "URL till biljettsida eller bokningsformulär.",
+        }),
         brand: fields.select({
           label: "Varumärke",
           options: [

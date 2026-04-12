@@ -64,7 +64,7 @@ export default async function VenueHomeEN({
           return upcoming.length > 0 ? (
             <section className="mb-12">
               <h2 className="mb-4 text-2xl font-bold text-white">{t.home.upcomingEvents}</h2>
-              <UpcomingEventList events={upcoming.slice(0, 5)} />
+              <UpcomingEventList events={upcoming.slice(0, 5)} eventPathBase={`/en/${venue}/events`} />
             </section>
           ) : null;
         })()}

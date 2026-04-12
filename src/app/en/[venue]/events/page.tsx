@@ -29,6 +29,7 @@ export default async function VenueEventsPageEN({
               upcoming={upcoming}
               past={past}
               pastLabel={t.events.pastEvents}
+              eventPathBase={`/en/${venue}/events`}
             />
           </div>
         ) : (
