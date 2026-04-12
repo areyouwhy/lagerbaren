@@ -7,6 +7,7 @@ const dict = {
       home: "Hem",
       menu: "Meny",
       lunch: "Lunch",
+      gallery: "Galleri",
       stories: "Berättelser",
       events: "Event",
       book: "Boka bord",
@@ -62,6 +63,11 @@ const dict = {
       backToList: "Tillbaka till alla berättelser",
       emptyState: "Inga berättelser ännu.",
     },
+    gallery: {
+      title: "Galleri",
+      clickToZoom: "Klicka på en bild för att se den i större format. Använd piltangenterna för att bläddra.",
+      emptyState: "Galleriet uppdateras snart.",
+    },
     events: {
       title: "Event",
       upcoming: "Kommande event",
@@ -110,6 +116,7 @@ const dict = {
       home: "Home",
       menu: "Menu",
       lunch: "Lunch",
+      gallery: "Gallery",
       stories: "Stories",
       events: "Events",
       book: "Book a table",
@@ -164,6 +171,11 @@ const dict = {
       title: "Stories",
       backToList: "Back to all stories",
       emptyState: "No stories yet.",
+    },
+    gallery: {
+      title: "Gallery",
+      clickToZoom: "Click any image to zoom. Use arrow keys to navigate.",
+      emptyState: "Gallery coming soon.",
     },
     events: {
       title: "Events",
@@ -221,13 +233,14 @@ export function getVenueNav(locale: Locale, venue: Venue) {
   const prefix = locale === "sv" ? `/${venue}` : `/en/${venue}`;
   const paths =
     locale === "sv"
-      ? { menu: "meny", lunch: "lunch", stories: "berattelser", events: "event", book: "boka", findUs: "hitta-oss" }
-      : { menu: "menu", lunch: "lunch", stories: "stories", events: "events", book: "book", findUs: "find-us" };
+      ? { menu: "meny", lunch: "lunch", gallery: "galleri", stories: "berattelser", events: "event", book: "boka", findUs: "hitta-oss" }
+      : { menu: "menu", lunch: "lunch", gallery: "gallery", stories: "stories", events: "events", book: "book", findUs: "find-us" };
 
   return [
     { label: t.nav.home, href: prefix },
     { label: t.nav.menu, href: `${prefix}/${paths.menu}` },
     { label: t.nav.lunch, href: `${prefix}/${paths.lunch}` },
+    { label: t.nav.gallery, href: `${prefix}/${paths.gallery}` },
     { label: t.nav.stories, href: `${prefix}/${paths.stories}` },
     { label: t.nav.events, href: `${prefix}/${paths.events}` },
     { label: t.nav.book, href: `${prefix}/${paths.book}` },
@@ -244,6 +257,7 @@ export function getLangSwitchHref(
   const svToEn: Record<string, string> = {
     meny: "menu",
     lunch: "lunch",
+    galleri: "gallery",
     berattelser: "stories",
     event: "events",
     boka: "book",
@@ -252,6 +266,7 @@ export function getLangSwitchHref(
   const enToSv: Record<string, string> = {
     menu: "meny",
     lunch: "lunch",
+    gallery: "galleri",
     stories: "berattelser",
     events: "event",
     book: "boka",
