@@ -3,9 +3,10 @@ import { PageHero } from "@/components/page-hero";
 import { AmbienceStrip } from "@/components/ambience-strip";
 import { BRAND } from "@/lib/constants";
 import { getDict, type Venue } from "@/lib/i18n";
-import { getAmbienceImages, getVenueEvents, splitEvents } from "@/lib/venue-content";
+import { getAmbienceImages, getVenueAbout, getVenueEvents, splitEvents } from "@/lib/venue-content";
 import { UpcomingEventList } from "@/components/event-list";
-import { reader } from "@/lib/reader";
+
+const LOCALE = "sv";
 
 export default async function VenueHome({
   params,
@@ -14,17 +15,15 @@ export default async function VenueHome({
 }) {
   const { venue } = await params;
   const v = venue as Venue;
-  const t = getDict("sv");
+  const t = getDict(LOCALE);
   const brand = BRAND[v];
-  const events = await getVenueEvents(v);
+  const events = await getVenueEvents(v, LOCALE);
 
-  const lagerAbout = v === "lagerbaren" ? await reader.singletons.aboutLagerbaren.read() : null;
-  const masalaAbout = v === "masala-art" ? await reader.singletons.aboutMasalaArt.read() : null;
-
-  const heroTitle = lagerAbout?.heroTitle ?? masalaAbout?.heroTitle ?? brand.name;
-  const heroSubtitle = lagerAbout?.heroSubtitle ?? masalaAbout?.heroSubtitle ?? brand.tagline.sv;
-  const description = lagerAbout?.description ?? masalaAbout?.description ?? "";
-  const heroImage = lagerAbout?.heroImage ?? masalaAbout?.heroImage ?? null;
+  const about = await getVenueAbout(v, LOCALE);
+  const heroTitle = about?.heroTitle || brand.name;
+  const heroSubtitle = about?.heroSubtitle || brand.tagline.sv;
+  const description = about?.description || "";
+  const heroImage = about?.heroImage ?? null;
   const ambienceImages = await getAmbienceImages(v);
 
   return (
@@ -42,19 +41,17 @@ export default async function VenueHome({
       )}
 
       <div className="mx-auto max-w-4xl px-4 py-12">
-        <p className="mb-12 text-lg leading-relaxed text-zinc-300">
-          {description}
-        </p>
+        <p className="mb-12 text-lg leading-relaxed text-zinc-300">{description}</p>
 
-        {lagerAbout && (
+        {v === "lagerbaren" && about && (
           <div className="mb-12 grid gap-6 sm:grid-cols-2">
             <div className="rounded-xl border border-white/10 bg-zinc-900 p-6">
               <h2 className="mb-2 text-xl font-bold text-gold">{t.home.sport}</h2>
-              <p className="text-sm text-zinc-400">{lagerAbout.sportText}</p>
+              <p className="text-sm text-zinc-400">{about.sportText}</p>
             </div>
             <div className="rounded-xl border border-white/10 bg-zinc-900 p-6">
               <h2 className="mb-2 text-xl font-bold text-gold">{t.home.quiz}</h2>
-              <p className="text-sm text-zinc-400">{lagerAbout.quizText}</p>
+              <p className="text-sm text-zinc-400">{about.quizText}</p>
             </div>
           </div>
         )}

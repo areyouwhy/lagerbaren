@@ -1,1 +1,1 @@
-{"name":"Svenska Köttbullar","description":"Klassiska köttbullar med potatispuré, lingonsylt & gräddsås.","price":"199 kr","category":"kott","sortOrder":400,"vegetarian":false}
+{"name":"Svenska Köttbullar","description":{"sv":"Klassiska köttbullar med potatispuré, lingonsylt & gräddsås.","en":"Classic meatballs with mashed potato, lingonberry & cream sauce."},"price":"199 kr","category":"kott","sortOrder":400,"vegetarian":false,"nameEn":"Swedish Meatballs"}

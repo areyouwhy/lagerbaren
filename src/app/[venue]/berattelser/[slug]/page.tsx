@@ -8,7 +8,7 @@ import { getStory, getStoryCategoryLabel, getVenueStories } from "@/lib/venue-co
 export async function generateStaticParams() {
   const params: { venue: string; slug: string }[] = [];
   for (const venue of ["lagerbaren", "masala-art"] as Venue[]) {
-    const stories = await getVenueStories(venue);
+    const stories = await getVenueStories(venue, "sv");
     for (const story of stories) {
       params.push({ venue, slug: story.slug });
     }
@@ -26,7 +26,7 @@ export default async function StoryDetailPage({
   const t = getDict("sv");
   const brand = BRAND[v];
 
-  const story = await getStory(slug);
+  const story = await getStory(slug, "sv");
   if (!story) notFound();
 
   // Belt-and-braces brand check — make sure this story belongs to this venue
@@ -50,7 +50,7 @@ export default async function StoryDetailPage({
               className="mb-3 text-xs uppercase tracking-widest"
               style={{ color: brand.accent }}
             >
-              {getStoryCategoryLabel(story.category)}
+              {getStoryCategoryLabel(story.category, "sv")}
             </p>
             <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-lg md:text-6xl">
               {story.title}
@@ -68,7 +68,7 @@ export default async function StoryDetailPage({
             className="mb-3 text-xs uppercase tracking-widest"
             style={{ color: brand.accent }}
           >
-            {getStoryCategoryLabel(story.category)}
+            {getStoryCategoryLabel(story.category, "sv")}
           </p>
           <h1
             className="text-4xl font-bold tracking-tight md:text-5xl"

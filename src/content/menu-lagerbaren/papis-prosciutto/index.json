@@ -1,1 +1,1 @@
-{"name":"Papis Prosciutto","description":"Tomatsås, mozzarella, prosciutto crudo, rucola.","price":"149 kr","category":"pizza","sortOrder":110,"vegetarian":false}
+{"name":"Papis Prosciutto","description":{"sv":"Tomatsås, mozzarella, prosciutto crudo, rucola.","en":"Tomato sauce, mozzarella, prosciutto crudo, rocket."},"price":"149 kr","category":"pizza","sortOrder":110,"vegetarian":false,"nameEn":"Papis Prosciutto"}

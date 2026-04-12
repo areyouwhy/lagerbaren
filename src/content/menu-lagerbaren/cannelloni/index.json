@@ -1,1 +1,1 @@
-{"name":"Cannelloni","description":"Med ricotta & spenat.","price":"199 kr","category":"pasta","sortOrder":350,"vegetarian":true}
+{"name":"Cannelloni","description":{"sv":"Med ricotta & spenat.","en":"With ricotta & spinach."},"price":"199 kr","category":"pasta","sortOrder":350,"vegetarian":true,"nameEn":"Cannelloni"}

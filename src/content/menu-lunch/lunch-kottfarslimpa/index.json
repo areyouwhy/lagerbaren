@@ -1,1 +1,1 @@
-{"name":"Köttfärslimpa","description":"Med ärtor, potatispuré & gräddsås.","price":"145 kr","brand":"lagerbaren","weekday":["tue"],"sortOrder":200}
+{"name":"Köttfärslimpa","description":{"sv":"Med ärtor, potatispuré & gräddsås.","en":"With peas, mashed potato & cream sauce."},"price":"145 kr","brand":"lagerbaren","weekday":["tue"],"sortOrder":200,"nameEn":"Meatloaf"}

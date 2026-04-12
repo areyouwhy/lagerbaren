@@ -12,7 +12,7 @@ export default async function VenueFindUsPageEN({
   const v = venue as Venue;
   const t = getDict("en");
   const brand = BRAND[v];
-  const info = await getSiteInfo();
+  const info = await getSiteInfo("en");
 
   return (
     <>

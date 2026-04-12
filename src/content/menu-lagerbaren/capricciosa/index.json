@@ -1,1 +1,1 @@
-{"name":"Capricciosa","description":"Tomatsås, skinka, champinjoner.","price":"149 kr","category":"pizza","sortOrder":140,"vegetarian":false}
+{"name":"Capricciosa","description":{"sv":"Tomatsås, skinka, champinjoner.","en":"Tomato sauce, ham, mushrooms."},"price":"149 kr","category":"pizza","sortOrder":140,"vegetarian":false,"nameEn":"Capricciosa"}

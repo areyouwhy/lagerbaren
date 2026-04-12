@@ -12,7 +12,7 @@ export default async function VenueFindUsPage({
   const v = venue as Venue;
   const t = getDict("sv");
   const brand = BRAND[v];
-  const info = await getSiteInfo();
+  const info = await getSiteInfo("sv");
 
   return (
     <>

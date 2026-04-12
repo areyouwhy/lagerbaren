@@ -1,1 +1,1 @@
-{"name":"Alles Peperoni","description":"Tomatsås, ost, peperoni, rucola.","price":"149 kr","category":"pizza","sortOrder":150,"vegetarian":false}
+{"name":"Alles Peperoni","description":{"sv":"Tomatsås, ost, peperoni, rucola.","en":"Tomato sauce, cheese, pepperoni, rocket."},"price":"149 kr","category":"pizza","sortOrder":150,"vegetarian":false,"nameEn":"Alles Peperoni"}

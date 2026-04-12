@@ -1,1 +1,1 @@
-{"name":"Bruschetta","description":"Bröd, parmesanflingor, cocktailtomater, balsamico.","price":"109 kr","category":"forratt","sortOrder":210,"vegetarian":true}
+{"name":"Bruschetta","description":{"sv":"Bröd, parmesanflingor, cocktailtomater, balsamico.","en":"Bread, parmesan flakes, cherry tomatoes, balsamic."},"price":"109 kr","category":"forratt","sortOrder":210,"vegetarian":true,"nameEn":"Bruschetta"}

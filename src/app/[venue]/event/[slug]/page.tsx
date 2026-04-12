@@ -8,7 +8,7 @@ import { getEvent, getSiteInfo, getVenueEvents } from "@/lib/venue-content";
 export async function generateStaticParams() {
   const params: { venue: string; slug: string }[] = [];
   for (const venue of ["lagerbaren", "masala-art"] as Venue[]) {
-    const events = await getVenueEvents(venue);
+    const events = await getVenueEvents(venue, "sv");
     for (const event of events) {
       params.push({ venue, slug: event.slug });
     }
@@ -33,11 +33,11 @@ export default async function EventDetailPage({
   const t = getDict("sv");
   const brand = BRAND[v];
 
-  const event = await getEvent(slug);
+  const event = await getEvent(slug, "sv");
   if (!event) notFound();
   if (event.brand !== "both" && event.brand !== v) notFound();
 
-  const siteInfo = await getSiteInfo();
+  const siteInfo = await getSiteInfo("sv");
   const fallbackLocation = [siteInfo?.addressLine1, siteInfo?.addressLine2]
     .filter(Boolean)
     .join(", ");

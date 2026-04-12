@@ -1,1 +1,1 @@
-{"name":"Fläskschnitzel","description":"Med friterad potatis & rödvinssås.","price":"145 kr","brand":"lagerbaren","weekday":["wed"],"sortOrder":300}
+{"name":"Fläskschnitzel","description":{"sv":"Med friterad potatis & rödvinssås.","en":"With fried potatoes & red wine sauce."},"price":"145 kr","brand":"lagerbaren","weekday":["wed"],"sortOrder":300,"nameEn":"Pork Schnitzel"}

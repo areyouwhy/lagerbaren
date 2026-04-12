@@ -14,8 +14,8 @@ export default async function VenueMenuPageEN({
   const t = getDict("en");
   const brand = BRAND[v];
 
-  const foodSections = await getVenueMenuSections(v);
-  const drinkSections = v === "lagerbaren" ? await getVenueDrinkSections() : [];
+  const foodSections = await getVenueMenuSections(v, "en");
+  const drinkSections = v === "lagerbaren" ? await getVenueDrinkSections("en") : [];
 
   return (
     <>

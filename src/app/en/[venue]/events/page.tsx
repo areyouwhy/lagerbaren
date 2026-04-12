@@ -13,9 +13,9 @@ export default async function VenueEventsPageEN({
   const v = venue as Venue;
   const t = getDict("en");
   const brand = BRAND[v];
-  const events = await getVenueEvents(v);
+  const events = await getVenueEvents(v, "en");
   const { upcoming, past } = splitEvents(events);
-  const festvaning = v === "lagerbaren" ? await getFestvaningInfo() : null;
+  const festvaning = v === "lagerbaren" ? await getFestvaningInfo("en") : null;
 
   return (
     <>

@@ -1,6 +1,39 @@
 export type Locale = "sv" | "en";
 export type Venue = "lagerbaren" | "masala-art";
 
+/**
+ * A localized string is either an object with one entry per supported locale,
+ * or undefined/null. Empty English values fall back to Swedish so the editor
+ * can leave English blank for low-priority content.
+ */
+export type LocalizedString =
+  | { sv: string; en?: string }
+  | { sv?: string; en: string }
+  | string
+  | null
+  | undefined;
+
+export function localize(field: LocalizedString, locale: Locale): string {
+  if (field == null) return "";
+  if (typeof field === "string") return field;
+  if (locale === "en") return (field.en || field.sv) ?? "";
+  return (field.sv || field.en) ?? "";
+}
+
+/**
+ * For slug-source fields (which must remain plain strings because Keystatic's
+ * fields.slug() can't accept an object). Use this when you have a Swedish
+ * canonical value plus an optional English override stored in a sibling field.
+ */
+export function localizePaired(
+  svValue: string | null | undefined,
+  enValue: string | null | undefined,
+  locale: Locale,
+): string {
+  if (locale === "en") return (enValue || svValue) ?? "";
+  return (svValue || enValue) ?? "";
+}
+
 const dict = {
   sv: {
     nav: {

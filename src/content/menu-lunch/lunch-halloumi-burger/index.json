@@ -1,1 +1,1 @@
-{"name":"Halloumi Burger","description":"Vegetarisk variant med pommes.","price":"145 kr","brand":"lagerbaren","weekday":["fri"],"sortOrder":510}
+{"name":"Halloumi Burger","description":{"sv":"Vegetarisk variant med pommes.","en":"Vegetarian variant with fries."},"price":"145 kr","brand":"lagerbaren","weekday":["fri"],"sortOrder":510,"nameEn":"Halloumi Burger"}

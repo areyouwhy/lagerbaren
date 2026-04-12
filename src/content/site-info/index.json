@@ -1,12 +1,1 @@
-{
-  "addressLine1": "Södermalm, Stockholm",
-  "phoneLagerbaren": "08-643 18 08",
-  "phoneMasalaArt": "08-36 88 48",
-  "email": "boka@lagerbaren.se",
-  "instagramMasalaArt": "@masalaartsodermalm",
-  "facebookMasalaArt": "masalaartstreetfood",
-  "openingHoursWeekdays": "11:00 – 23:00",
-  "openingHoursWeekend": "12:00 – 01:00",
-  "lunchHours": "11:00 – 14:00",
-  "googleMapsEmbed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2036.4853811672647!2d18.07407437711707!3d59.30815157460406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f77f697c67a3f%3A0x3f6c037e67bb7c8a!2sLagerbaren!5e0!3m2!1ssv!2sse!4v1775997966469!5m2!1ssv!2sse\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
-}
+{"addressLine1":{"sv":"Södermalm, Stockholm","en":"Södermalm, Stockholm"},"phoneLagerbaren":"08-643 18 08","phoneMasalaArt":"08-36 88 48","email":"boka@lagerbaren.se","instagramMasalaArt":"@masalaartsodermalm","facebookMasalaArt":"masalaartstreetfood","openingHoursWeekdays":{"sv":"11:00 – 23:00","en":"11:00 – 23:00"},"openingHoursWeekend":{"sv":"12:00 – 01:00","en":"12:00 – 01:00"},"lunchHours":{"sv":"11:00 – 14:00","en":"11:00 – 14:00"},"googleMapsEmbed":"<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2036.4853811672647!2d18.07407437711707!3d59.30815157460406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f77f697c67a3f%3A0x3f6c037e67bb7c8a!2sLagerbaren!5e0!3m2!1ssv!2sse!4v1775997966469!5m2!1ssv!2sse\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"}

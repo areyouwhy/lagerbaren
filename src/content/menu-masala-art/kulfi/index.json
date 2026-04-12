@@ -1,1 +1,1 @@
-{"name":"Kulfi","description":"Hemgjord glass med russin, kokos & pistagenötter.","price":"89 kr","category":"dessert","sortOrder":810,"vegetarian":true,"spicy":"mild"}
+{"name":"Kulfi","description":{"sv":"Hemgjord glass med russin, kokos & pistagenötter.","en":"Homemade ice cream with raisins, coconut & pistachios."},"price":"89 kr","category":"dessert","sortOrder":810,"vegetarian":true,"spicy":"mild","nameEn":"Kulfi"}

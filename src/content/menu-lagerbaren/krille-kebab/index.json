@@ -1,1 +1,1 @@
-{"name":"Krille Kebab","description":"Kebab, vitlökssås, lök.","price":"—","category":"pizza","sortOrder":170,"vegetarian":false}
+{"name":"Krille Kebab","description":{"sv":"Kebab, vitlökssås, lök.","en":"Kebab, garlic sauce, onion."},"price":"—","category":"pizza","sortOrder":170,"vegetarian":false,"nameEn":"Krille Kebab"}

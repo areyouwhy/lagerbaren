@@ -1,1 +1,1 @@
-{"name":"Singara","description":"Friterad grönsakspirog.","price":"65 kr","category":"forratt","sortOrder":100,"vegetarian":true,"spicy":"mild"}
+{"name":"Singara","description":{"sv":"Friterad grönsakspirog.","en":"Fried vegetable parcel."},"price":"65 kr","category":"forratt","sortOrder":100,"vegetarian":true,"spicy":"mild","nameEn":"Singara"}

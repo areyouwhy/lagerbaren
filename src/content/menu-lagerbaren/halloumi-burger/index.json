@@ -1,1 +1,1 @@
-{"name":"Halloumi Burger","description":"Cheddar, dressing, tomat, sallad, picklad gurka, lök.","price":"169 kr","category":"burgare","sortOrder":710,"vegetarian":true}
+{"name":"Halloumi Burger","description":{"sv":"Cheddar, dressing, tomat, sallad, picklad gurka, lök.","en":"Cheddar, dressing, tomato, lettuce, pickled cucumber, onion."},"price":"169 kr","category":"burgare","sortOrder":710,"vegetarian":true,"nameEn":"Halloumi Burger"}

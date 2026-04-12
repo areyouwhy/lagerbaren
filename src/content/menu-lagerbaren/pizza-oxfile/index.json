@@ -1,1 +1,1 @@
-{"name":"Pizza Oxfilé","description":"Tomatsås, mozzarella, oxfilé, champinjoner, bearnaise.","price":"149 kr","category":"pizza","sortOrder":160,"vegetarian":false}
+{"name":"Pizza Oxfilé","description":{"sv":"Tomatsås, mozzarella, oxfilé, champinjoner, bearnaise.","en":"Tomato sauce, mozzarella, beef tenderloin, mushrooms, béarnaise."},"price":"149 kr","category":"pizza","sortOrder":160,"vegetarian":false,"nameEn":"Beef Tenderloin Pizza"}

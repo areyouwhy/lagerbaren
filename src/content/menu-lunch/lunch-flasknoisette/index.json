@@ -1,1 +1,1 @@
-{"name":"Fläsknoisette","description":"Med pommes, rödvinssås & bearnaise.","price":"145 kr","brand":"lagerbaren","weekday":["thu"],"sortOrder":400}
+{"name":"Fläsknoisette","description":{"sv":"Med pommes, rödvinssås & bearnaise.","en":"With fries, red wine sauce & béarnaise."},"price":"145 kr","brand":"lagerbaren","weekday":["thu"],"sortOrder":400,"nameEn":"Pork Noisette"}

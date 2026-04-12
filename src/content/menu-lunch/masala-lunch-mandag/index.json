@@ -1,1 +1,1 @@
-{"name":"Lunch måndag","description":"Be ägaren fylla i från måndagens scannade meny.","price":"145 kr","brand":"masala-art","weekday":["mon"],"sortOrder":100}
+{"name":"Lunch måndag","description":{"sv":"Be ägaren fylla i från måndagens scannade meny.","en":"Ask the owner to fill in from Monday's scanned menu."},"price":"145 kr","brand":"masala-art","weekday":["mon"],"sortOrder":100,"nameEn":"Monday Lunch"}

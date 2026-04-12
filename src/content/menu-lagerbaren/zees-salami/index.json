@@ -1,1 +1,1 @@
-{"name":"Zees Salami","description":"Tomatsås, mozzarella, salami, paprika, rucola.","price":"135 kr","category":"pizza","sortOrder":120,"vegetarian":false}
+{"name":"Zees Salami","description":{"sv":"Tomatsås, mozzarella, salami, paprika, rucola.","en":"Tomato sauce, mozzarella, salami, pepper, rocket."},"price":"135 kr","category":"pizza","sortOrder":120,"vegetarian":false,"nameEn":"Zees Salami"}

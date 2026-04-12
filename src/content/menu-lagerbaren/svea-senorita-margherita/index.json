@@ -1,1 +1,1 @@
-{"name":"Svea Señorita Margherita","description":"Tomatsås, mozzarella, basilika.","price":"135 kr","category":"pizza","sortOrder":100,"vegetarian":true}
+{"name":"Svea Señorita Margherita","description":{"sv":"Tomatsås, mozzarella, basilika.","en":"Tomato sauce, mozzarella, basil."},"price":"135 kr","category":"pizza","sortOrder":100,"vegetarian":true,"nameEn":"Svea Señorita Margherita"}

@@ -1,1 +1,1 @@
-{"name":"Spaghetti Carbonara","description":"Bacon, lök, vitlök, vitt vin, grädde, äggula.","price":"199 kr","category":"pasta","sortOrder":330,"vegetarian":false}
+{"name":"Spaghetti Carbonara","description":{"sv":"Bacon, lök, vitlök, vitt vin, grädde, äggula.","en":"Bacon, onion, garlic, white wine, cream, egg yolk."},"price":"199 kr","category":"pasta","sortOrder":330,"vegetarian":false,"nameEn":"Spaghetti Carbonara"}

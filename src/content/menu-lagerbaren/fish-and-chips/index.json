@@ -1,1 +1,1 @@
-{"name":"Fish & Chips","description":"Med remouladsås.","price":"189 kr","category":"fisk","sortOrder":600,"vegetarian":false}
+{"name":"Fish & Chips","description":{"sv":"Med remouladsås.","en":"With remoulade sauce."},"price":"189 kr","category":"fisk","sortOrder":600,"vegetarian":false,"nameEn":"Fish & Chips"}

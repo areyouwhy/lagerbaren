@@ -12,14 +12,13 @@ const CATEGORY_ICONS: Record<string, string> = {
 };
 
 function EventCard({ event, eventPathBase }: { event: EventEntry; eventPathBase: string }) {
-  const { entry } = event;
-  const icon = CATEGORY_ICONS[entry.category] ?? "📌";
+  const icon = CATEGORY_ICONS[event.category] ?? "📌";
 
   return (
     <Link
       href={`${eventPathBase}/${event.slug}`}
       className={`flex items-center justify-between rounded-lg border bg-zinc-900 px-4 py-3 transition-colors hover:border-white/30 hover:bg-zinc-800 ${
-        entry.featured
+        event.featured
           ? "border-gold/40 ring-1 ring-gold/20"
           : "border-white/10"
       }`}
@@ -28,30 +27,30 @@ function EventCard({ event, eventPathBase }: { event: EventEntry; eventPathBase:
         <span className="mt-0.5 text-lg">{icon}</span>
         <div>
           <div className="flex items-center gap-2">
-            <p className="font-medium text-white">{entry.title}</p>
-            {entry.featured && (
+            <p className="font-medium text-white">{event.title}</p>
+            {event.featured && (
               <span className="rounded bg-gold/20 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-gold">
                 ★
               </span>
             )}
-            {entry.recurring && (
+            {event.recurring && (
               <span className="rounded bg-white/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-zinc-400">
                 ↻
               </span>
             )}
           </div>
-          {entry.description && (
-            <p className="mt-0.5 text-sm text-zinc-400">{entry.description}</p>
+          {event.description && (
+            <p className="mt-0.5 text-sm text-zinc-400">{event.description}</p>
           )}
         </div>
       </div>
       <div className="ml-4 shrink-0 text-right text-sm text-zinc-400">
-        {entry.recurring && entry.recurringDay ? (
-          <p>{entry.recurringDay}</p>
+        {event.recurring && event.recurringDay ? (
+          <p>{event.recurringDay}</p>
         ) : (
-          entry.date && <p>{entry.date}</p>
+          event.date && <p>{event.date}</p>
         )}
-        {entry.time && <p>{entry.time}</p>}
+        {event.time && <p>{event.time}</p>}
       </div>
     </Link>
   );

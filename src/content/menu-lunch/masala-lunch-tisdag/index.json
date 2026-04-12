@@ -1,1 +1,1 @@
-{"name":"Lunch tisdag","description":"Be ägaren fylla i.","price":"145 kr","brand":"masala-art","weekday":["tue"],"sortOrder":200}
+{"name":"Lunch tisdag","description":{"sv":"Be ägaren fylla i.","en":"Ask the owner to fill in."},"price":"145 kr","brand":"masala-art","weekday":["tue"],"sortOrder":200,"nameEn":"Tuesday Lunch"}

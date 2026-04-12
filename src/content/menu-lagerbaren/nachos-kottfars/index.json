@@ -1,1 +1,1 @@
-{"name":"Nachos Köttfärs","description":"Nachos, köttfärs, cheese, dipp, lök.","price":"—","category":"forratt","sortOrder":230,"vegetarian":false}
+{"name":"Nachos Köttfärs","description":{"sv":"Nachos, köttfärs, cheese, dipp, lök.","en":"Nachos, ground beef, cheese, dip, onion."},"price":"—","category":"forratt","sortOrder":230,"vegetarian":false,"nameEn":"Beef Nachos"}

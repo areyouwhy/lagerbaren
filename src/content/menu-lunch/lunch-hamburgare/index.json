@@ -1,1 +1,1 @@
-{"name":"Hamburgare","description":"Med pommes & klassiska tillbehör.","price":"145 kr","brand":"lagerbaren","weekday":["fri"],"sortOrder":500}
+{"name":"Hamburgare","description":{"sv":"Med pommes & klassiska tillbehör.","en":"With fries & classic accompaniments."},"price":"145 kr","brand":"lagerbaren","weekday":["fri"],"sortOrder":500,"nameEn":"Burger"}

@@ -1,1 +1,1 @@
-{"name":"Veg Pasta","description":"Med lök, champinjoner, paprika & tomatsås.","price":"145 kr","brand":"lagerbaren","weekday":["wed"],"sortOrder":310}
+{"name":"Veg Pasta","description":{"sv":"Med lök, champinjoner, paprika & tomatsås.","en":"With onion, mushrooms, peppers & tomato sauce."},"price":"145 kr","brand":"lagerbaren","weekday":["wed"],"sortOrder":310,"nameEn":"Vegetable Pasta"}

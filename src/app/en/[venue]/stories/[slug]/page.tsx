@@ -8,7 +8,7 @@ import { getStory, getStoryCategoryLabel, getVenueStories } from "@/lib/venue-co
 export async function generateStaticParams() {
   const params: { venue: string; slug: string }[] = [];
   for (const venue of ["lagerbaren", "masala-art"] as Venue[]) {
-    const stories = await getVenueStories(venue);
+    const stories = await getVenueStories(venue, "en");
     for (const story of stories) {
       params.push({ venue, slug: story.slug });
     }
@@ -26,7 +26,7 @@ export default async function StoryDetailPageEN({
   const t = getDict("en");
   const brand = BRAND[v];
 
-  const story = await getStory(slug);
+  const story = await getStory(slug, "en");
   if (!story) notFound();
   if (story.brand !== "both" && story.brand !== v) notFound();
 
@@ -45,7 +45,7 @@ export default async function StoryDetailPageEN({
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/80" />
           <div className="relative z-10 flex h-full flex-col items-center justify-end px-4 pb-12 text-center">
             <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: brand.accent }}>
-              {getStoryCategoryLabel(story.category)}
+              {getStoryCategoryLabel(story.category, "en")}
             </p>
             <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-lg md:text-6xl">
               {story.title}
@@ -60,7 +60,7 @@ export default async function StoryDetailPageEN({
       ) : (
         <div className="border-b border-white/10 bg-zinc-900 px-4 py-16 text-center">
           <p className="mb-3 text-xs uppercase tracking-widest" style={{ color: brand.accent }}>
-            {getStoryCategoryLabel(story.category)}
+            {getStoryCategoryLabel(story.category, "en")}
           </p>
           <h1
             className="text-4xl font-bold tracking-tight md:text-5xl"

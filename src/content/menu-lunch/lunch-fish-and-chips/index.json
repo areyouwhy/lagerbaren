@@ -1,1 +1,1 @@
-{"name":"Fish & Chips","description":"Med remouladsås.","price":"145 kr","brand":"lagerbaren","weekday":["fri"],"sortOrder":520}
+{"name":"Fish & Chips","description":{"sv":"Med remouladsås.","en":"With remoulade sauce."},"price":"145 kr","brand":"lagerbaren","weekday":["fri"],"sortOrder":520,"nameEn":"Fish & Chips"}

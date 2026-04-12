@@ -1,8 +1,1 @@
-{
-  "heroTitle": "Lagerbaren",
-  "heroSubtitle": "Södermalms sportbar sedan 2005",
-  "heroImage": "/images/cms/about-lagerbaren/heroImage.jpg",
-  "description": "Lagerbaren är Södermalms sportbar med stort utbud av fatöl, rom och whisky. Vi visar alla stora sportevenemang på våra storbilds-TV och projektorer. Välkommen till oss för lunch, after work eller en helkväll med god mat och dryck.",
-  "sportText": "Vi visar alla stora sportevenemang — fotboll, hockey, basket, MMA och mer. Stolt sponsor av Hammarbys sportlag.",
-  "quizText": "Pubquiz varje onsdag kl 19:00. Samla laget och kom!"
-}
+{"heroTitle":{"sv":"Lagerbaren","en":"Lagerbaren"},"heroSubtitle":{"sv":"Södermalms sportbar sedan 2005","en":"Södermalm's sports bar since 2005"},"heroImage":"/images/cms/about-lagerbaren/heroImage.jpg","description":{"sv":"Lagerbaren är Södermalms sportbar med stort utbud av fatöl, rom och whisky. Vi visar alla stora sportevenemang på våra storbilds-TV och projektorer. Välkommen till oss för lunch, after work eller en helkväll med god mat och dryck.","en":"Lagerbaren is Södermalm's sports bar with a wide selection of draft beers, rum and whisky. We show all the major sporting events on our big screens and projectors. Welcome for lunch, after-work or a full evening of great food and drinks."},"sportText":{"sv":"Vi visar alla stora sportevenemang — fotboll, hockey, basket, MMA och mer. Stolt sponsor av Hammarbys sportlag.","en":"We show every major sporting event — football, hockey, basketball, MMA and more. Proud sponsor of Hammarby's sports teams."},"quizText":{"sv":"Pubquiz varje onsdag kl 19:00. Samla laget och kom!","en":"Pub quiz every Wednesday at 7pm. Bring your team and join in!"}}

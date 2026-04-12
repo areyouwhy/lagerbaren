@@ -2,6 +2,23 @@ import { config, fields, collection, singleton } from "@keystatic/core";
 
 const useGithub = process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB === "1";
 
+// Localized text field — produces { sv, en } object on disk and in the editor
+// English is optional; pages fall back to Swedish via the localize() helper.
+const localizedText = (label: string, opts?: { multiline?: boolean; description?: string }) =>
+  fields.object({
+    sv: fields.text({
+      label: "Svenska",
+      multiline: opts?.multiline ?? false,
+    }),
+    en: fields.text({
+      label: "English (valfritt — faller tillbaka till svenska om tomt)",
+      multiline: opts?.multiline ?? false,
+    }),
+  }, {
+    label,
+    ...(opts?.description ? { description: opts.description } : {}),
+  });
+
 export default config({
   storage: useGithub
     ? {
@@ -16,8 +33,12 @@ export default config({
       path: "src/content/menu-lagerbaren/*/",
       format: "json",
       schema: {
-        name: fields.slug({ name: { label: "Namn" } }),
-        description: fields.text({ label: "Beskrivning", multiline: true }),
+        name: fields.slug({ name: { label: "Namn (svenska, används som URL)" } }),
+        nameEn: fields.text({
+          label: "Name (English)",
+          description: "Valfritt — faller tillbaka till svenska om tomt.",
+        }),
+        description: localizedText("Beskrivning", { multiline: true }),
         price: fields.text({ label: "Pris" }),
         category: fields.select({
           label: "Kategori",
@@ -46,8 +67,12 @@ export default config({
       path: "src/content/menu-masala-art/*/",
       format: "json",
       schema: {
-        name: fields.slug({ name: { label: "Namn" } }),
-        description: fields.text({ label: "Beskrivning", multiline: true }),
+        name: fields.slug({ name: { label: "Namn (svenska, används som URL)" } }),
+        nameEn: fields.text({
+          label: "Name (English)",
+          description: "Valfritt — faller tillbaka till svenska om tomt.",
+        }),
+        description: localizedText("Beskrivning", { multiline: true }),
         price: fields.text({ label: "Pris" }),
         category: fields.select({
           label: "Kategori",
@@ -82,8 +107,12 @@ export default config({
       path: "src/content/menu-lunch/*/",
       format: "json",
       schema: {
-        name: fields.slug({ name: { label: "Namn" } }),
-        description: fields.text({ label: "Beskrivning", multiline: true }),
+        name: fields.slug({ name: { label: "Namn (svenska, används som URL)" } }),
+        nameEn: fields.text({
+          label: "Name (English)",
+          description: "Valfritt — faller tillbaka till svenska om tomt.",
+        }),
+        description: localizedText("Beskrivning", { multiline: true }),
         price: fields.text({ label: "Pris" }),
         brand: fields.select({
           label: "Varumärke",
@@ -112,8 +141,12 @@ export default config({
       path: "src/content/menu-drinks/*/",
       format: "json",
       schema: {
-        name: fields.slug({ name: { label: "Namn" } }),
-        description: fields.text({ label: "Beskrivning", multiline: true }),
+        name: fields.slug({ name: { label: "Namn (svenska, används som URL)" } }),
+        nameEn: fields.text({
+          label: "Name (English)",
+          description: "Valfritt — faller tillbaka till svenska om tomt.",
+        }),
+        description: localizedText("Beskrivning", { multiline: true }),
         price: fields.text({ label: "Pris" }),
         category: fields.select({
           label: "Kategori",
@@ -138,17 +171,19 @@ export default config({
       path: "src/content/stories/*/",
       format: "json",
       schema: {
-        title: fields.slug({
-          name: { label: "Titel" },
+        title: fields.slug({ name: { label: "Titel (svenska, används som URL)" } }),
+        titleEn: fields.text({
+          label: "Title (English)",
+          description: "Valfritt — faller tillbaka till svenska om tomt.",
         }),
-        subtitle: fields.text({ label: "Underrubrik" }),
+        subtitle: localizedText("Underrubrik"),
         heroImage: fields.image({
           label: "Hero-bild (valfri)",
           description: "Bild som visas i toppen av berättelsen.",
           directory: "public/images/cms/stories",
           publicPath: "/images/cms/stories/",
         }),
-        body: fields.text({ label: "Brödtext", multiline: true }),
+        body: localizedText("Brödtext", { multiline: true }),
         brand: fields.select({
           label: "Plats",
           options: [
@@ -208,12 +243,15 @@ export default config({
       path: "src/content/events/*/",
       format: "json",
       schema: {
-        title: fields.slug({ name: { label: "Titel" } }),
-        description: fields.text({ label: "Kort beskrivning (visas i listan)", multiline: true }),
-        body: fields.text({
-          label: "Långa text (visas på eventsidan)",
-          description: "Skriv flera stycken med blanka rader emellan.",
+        title: fields.slug({ name: { label: "Titel (svenska, används som URL)" } }),
+        titleEn: fields.text({
+          label: "Title (English)",
+          description: "Valfritt — faller tillbaka till svenska om tomt.",
+        }),
+        description: localizedText("Kort beskrivning (visas i listan)", { multiline: true }),
+        body: localizedText("Lång text (visas på eventsidan)", {
           multiline: true,
+          description: "Skriv flera stycken med blanka rader emellan.",
         }),
         heroImage: fields.image({
           label: "Hero-bild (valfri)",
@@ -224,8 +262,7 @@ export default config({
         date: fields.date({ label: "Datum" }),
         endDate: fields.date({ label: "Slutdatum (valfritt, för flerdagars-event)" }),
         time: fields.text({ label: "Tid" }),
-        location: fields.text({
-          label: "Plats (om annan än vårt vanliga ställe)",
+        location: localizedText("Plats (om annan än vårt vanliga ställe)", {
           description: "Lämna tomt för att använda Lagerbarens vanliga adress.",
         }),
         bookingUrl: fields.text({
@@ -276,17 +313,17 @@ export default config({
       path: "src/content/site-info/",
       format: "json",
       schema: {
-        addressLine1: fields.text({ label: "Adress rad 1", defaultValue: "Södermalm, Stockholm" }),
-        addressLine2: fields.text({ label: "Adress rad 2" }),
+        addressLine1: localizedText("Adress rad 1"),
+        addressLine2: localizedText("Adress rad 2"),
         phoneLagerbaren: fields.text({ label: "Telefon Lagerbaren", defaultValue: "08-643 18 08" }),
         phoneMasalaArt: fields.text({ label: "Telefon Masala Art", defaultValue: "08-36 88 48" }),
         email: fields.text({ label: "Bokningsemail", defaultValue: "boka@lagerbaren.se" }),
         instagramMasalaArt: fields.text({ label: "Instagram Masala Art", defaultValue: "@masalaartsodermalm" }),
         facebookMasalaArt: fields.text({ label: "Facebook Masala Art", defaultValue: "masalaartstreetfood" }),
-        openingHoursWeekdays: fields.text({ label: "Öppettider vardagar", defaultValue: "11:00 – 23:00" }),
-        openingHoursWeekend: fields.text({ label: "Öppettider helg", defaultValue: "12:00 – 01:00" }),
-        lunchHours: fields.text({ label: "Lunchtider", defaultValue: "11:00 – 14:00" }),
-        googleMapsEmbed: fields.text({ label: "Google Maps Embed URL", multiline: true }),
+        openingHoursWeekdays: localizedText("Öppettider vardagar"),
+        openingHoursWeekend: localizedText("Öppettider helg"),
+        lunchHours: localizedText("Lunchtider"),
+        googleMapsEmbed: fields.text({ label: "Google Maps Embed", multiline: true }),
       },
     }),
     lunchInfo: singleton({
@@ -294,41 +331,14 @@ export default config({
       path: "src/content/lunch-info/",
       format: "json",
       schema: {
-        priceWeekly: fields.text({
-          label: "Pris veckans lunch",
-          defaultValue: "145 kr",
-        }),
-        includesText: fields.text({
-          label: "Vad ingår",
-          multiline: true,
-          defaultValue: "Inkl. måltidsdryck, två sorters bröd, sallad, vitlöksdressing & kaffe",
-        }),
-        favoritbiffenTitle: fields.text({
-          label: "Favoritbiffen — titel",
-          defaultValue: "Favoritbiffen",
-        }),
-        favoritbiffenDescription: fields.text({
-          label: "Favoritbiffen — beskrivning",
-          multiline: true,
-          defaultValue: "Ryggbiff med pommes, rödvinssås & bearnaise. Inkl. samma tillbehör som veckans lunch.",
-        }),
-        favoritbiffenPrice: fields.text({
-          label: "Favoritbiffen — pris",
-          defaultValue: "165 kr",
-        }),
-        hoursLagerbaren: fields.text({
-          label: "Lunchtider Lagerbaren",
-          defaultValue: "Mån–Fre 11:00–14:30",
-        }),
-        hoursMasalaArt: fields.text({
-          label: "Lunchtider Masala Art",
-          defaultValue: "Mån–Fre 11:00–14:30",
-        }),
-        closedMessage: fields.text({
-          label: "Stängt-meddelande (helger)",
-          multiline: true,
-          defaultValue: "Lunchen är stängd på helgen — välkommen tillbaka på måndag.",
-        }),
+        priceWeekly: localizedText("Pris veckans lunch"),
+        includesText: localizedText("Vad ingår", { multiline: true }),
+        favoritbiffenTitle: localizedText("Favoritbiffen — titel"),
+        favoritbiffenDescription: localizedText("Favoritbiffen — beskrivning", { multiline: true }),
+        favoritbiffenPrice: localizedText("Favoritbiffen — pris"),
+        hoursLagerbaren: localizedText("Lunchtider Lagerbaren"),
+        hoursMasalaArt: localizedText("Lunchtider Masala Art"),
+        closedMessage: localizedText("Stängt-meddelande (helger)", { multiline: true }),
       },
     }),
     festvaning: singleton({
@@ -336,14 +346,14 @@ export default config({
       path: "src/content/festvaning/",
       format: "json",
       schema: {
-        title: fields.text({ label: "Titel", defaultValue: "Festväningen" }),
-        description: fields.text({ label: "Beskrivning", multiline: true, defaultValue: "Vår festväning rymmer upp till 60 personer och är perfekt för födelsedagar, firmafester, release-fester och andra tillställningar." }),
-        capacity: fields.text({ label: "Kapacitet", defaultValue: "Upp till 60 personer" }),
-        includesText: fields.text({ label: "Vad ingår", multiline: true, defaultValue: "Egen bar, ljudsystem, projektor, mikrofon. Möjlighet att beställa mat från både Lagerbaren och Masala Art." }),
-        priceInfo: fields.text({ label: "Prisinformation", multiline: true, defaultValue: "Kontakta oss för offert. Pris beror på dag, tid och antal gäster." }),
-        fullBarTitle: fields.text({ label: "Helbokningav baren - Titel", defaultValue: "Boka hela Lagerbaren" }),
-        fullBarDescription: fields.text({ label: "Helbokning av baren - Beskrivning", multiline: true, defaultValue: "Vill ni ha hela Lagerbaren för er? Vi erbjuder helbokning av baren för större event och fester. Perfekt för firmaevent, releasefester eller privata tillställningar." }),
-        contactInfo: fields.text({ label: "Kontaktinfo", defaultValue: "Kontakta oss på boka@lagerbaren.se eller ring 08-643 18 08" }),
+        title: localizedText("Titel"),
+        description: localizedText("Beskrivning", { multiline: true }),
+        capacity: localizedText("Kapacitet"),
+        includesText: localizedText("Vad ingår", { multiline: true }),
+        priceInfo: localizedText("Prisinformation", { multiline: true }),
+        fullBarTitle: localizedText("Helbokning av baren — titel"),
+        fullBarDescription: localizedText("Helbokning av baren — beskrivning", { multiline: true }),
+        contactInfo: localizedText("Kontaktinfo"),
       },
     }),
     aboutLagerbaren: singleton({
@@ -351,17 +361,17 @@ export default config({
       path: "src/content/about-lagerbaren/",
       format: "json",
       schema: {
-        heroTitle: fields.text({ label: "Hero-titel", defaultValue: "Lagerbaren" }),
-        heroSubtitle: fields.text({ label: "Hero-undertitel", defaultValue: "Södermalms sportbar sedan 2005" }),
+        heroTitle: localizedText("Hero-titel"),
+        heroSubtitle: localizedText("Hero-undertitel"),
         heroImage: fields.image({
           label: "Hero-bild (stor bild i toppen av sidan)",
           description: "Den stora bilden besökare ser först. Använd ett bra foto av baren eller maten.",
           directory: "public/images/cms/about-lagerbaren",
           publicPath: "/images/cms/about-lagerbaren/",
         }),
-        description: fields.text({ label: "Beskrivning", multiline: true, defaultValue: "Lagerbaren är Södermalms sportbar med stort utbud av fatöl, rom och whisky. Vi visar alla stora sportevenemang på våra storbilds-TV och projektorer. Välkommen till oss för lunch, after work eller en helkväll med god mat och dryck." }),
-        sportText: fields.text({ label: "Sport-text", multiline: true, defaultValue: "Vi visar alla stora sportevenemang — fotboll, hockey, basket, MMA och mer. Stolt sponsor av Hammarbys sportlag." }),
-        quizText: fields.text({ label: "Quiz-text", defaultValue: "Pubquiz varje onsdag kl 19:00. Samla laget och kom!" }),
+        description: localizedText("Beskrivning", { multiline: true }),
+        sportText: localizedText("Sport-text", { multiline: true }),
+        quizText: localizedText("Quiz-text"),
       },
     }),
     aboutMasalaArt: singleton({
@@ -369,15 +379,15 @@ export default config({
       path: "src/content/about-masala-art/",
       format: "json",
       schema: {
-        heroTitle: fields.text({ label: "Hero-titel", defaultValue: "Masala Art" }),
-        heroSubtitle: fields.text({ label: "Hero-undertitel", defaultValue: "Indisk & Bengalisk mat på Södermalm" }),
+        heroTitle: localizedText("Hero-titel"),
+        heroSubtitle: localizedText("Hero-undertitel"),
         heroImage: fields.image({
           label: "Hero-bild (stor bild i toppen av sidan)",
           description: "Den stora bilden besökare ser först. Använd ett bra foto av en bowl eller curry.",
           directory: "public/images/cms/about-masala-art",
           publicPath: "/images/cms/about-masala-art/",
         }),
-        description: fields.text({ label: "Beskrivning", multiline: true, defaultValue: "Masala Art serverar autentisk indisk och bengalisk mat i hjärtat av Södermalm. Våra bowls och traditionella rätter lagas från grunden med färska kryddor och ingredienser." }),
+        description: localizedText("Beskrivning", { multiline: true }),
       },
     }),
   },

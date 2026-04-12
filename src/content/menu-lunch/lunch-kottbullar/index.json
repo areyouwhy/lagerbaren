@@ -1,1 +1,1 @@
-{"name":"Köttbullar","description":"Med potatispuré, lingon & gräddsås.","price":"145 kr","brand":"lagerbaren","weekday":["mon"],"sortOrder":110}
+{"name":"Köttbullar","description":{"sv":"Med potatispuré, lingon & gräddsås.","en":"With mashed potato, lingonberry & cream sauce."},"price":"145 kr","brand":"lagerbaren","weekday":["mon"],"sortOrder":110,"nameEn":"Swedish Meatballs"}

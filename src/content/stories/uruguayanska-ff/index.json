@@ -1,10 +1,1 @@
-{
-  "title": "Uruguayanska FF",
-  "subtitle": "Stolt sponsor 2026!",
-  "heroImage": "/images/cms/stories/uruguayanska-ff/heroImage.jpg",
-  "body": "Uruguay noamaaa",
-  "brand": "lagerbaren",
-  "category": "sponsorship",
-  "featured": false,
-  "sortOrder": 1
-}
+{"title":"Uruguayanska FF","titleEn":"Uruguayan FF","subtitle":{"sv":"Stolt sponsor 2026!","en":"Proud sponsor in 2026!"},"heroImage":"/images/cms/stories/uruguayanska-ff/heroImage.jpg","body":{"sv":"Uruguay noamaaa","en":"Uruguay noamaaa"},"brand":"lagerbaren","category":"sponsorship","featured":false,"sortOrder":1}

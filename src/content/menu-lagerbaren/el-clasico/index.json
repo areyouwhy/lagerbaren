@@ -1,1 +1,1 @@
-{"name":"El Clasico","description":"Cheddar, dressing, tomat, sallad, picklad gurka, lök.","price":"169 kr","category":"burgare","sortOrder":700,"vegetarian":false}
+{"name":"El Clasico","description":{"sv":"Cheddar, dressing, tomat, sallad, picklad gurka, lök.","en":"Cheddar, dressing, tomato, lettuce, pickled cucumber, onion."},"price":"169 kr","category":"burgare","sortOrder":700,"vegetarian":false,"nameEn":"El Clasico Burger"}

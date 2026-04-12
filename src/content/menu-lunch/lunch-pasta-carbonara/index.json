@@ -1,1 +1,1 @@
-{"name":"Pasta Carbonara","description":"Bacon, lök, vitlök, vitt vin, grädde & äggula.","price":"145 kr","brand":"lagerbaren","weekday":["tue"],"sortOrder":210}
+{"name":"Pasta Carbonara","description":{"sv":"Bacon, lök, vitlök, vitt vin, grädde & äggula.","en":"Bacon, onion, garlic, white wine, cream & egg yolk."},"price":"145 kr","brand":"lagerbaren","weekday":["tue"],"sortOrder":210,"nameEn":"Pasta Carbonara"}

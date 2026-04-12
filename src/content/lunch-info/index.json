@@ -1,10 +1,1 @@
-{
-  "priceWeekly": "145 kr",
-  "includesText": "Inkl. måltidsdryck, två sorters bröd, sallad, vitlöksdressing & kaffe.",
-  "favoritbiffenTitle": "Favoritbiffen",
-  "favoritbiffenDescription": "Ryggbiff med pommes, rödvinssås & bearnaise. Inkl. samma tillbehör som veckans lunch.",
-  "favoritbiffenPrice": "165 kr",
-  "hoursLagerbaren": "Mån–Fre 11:00–14:30",
-  "hoursMasalaArt": "Mån–Fre 11:00–14:30",
-  "closedMessage": "Lunchen är stängd på helgen — välkommen tillbaka på måndag."
-}
+{"priceWeekly":{"sv":"145 kr","en":"145 SEK"},"includesText":{"sv":"Inkl. måltidsdryck, två sorters bröd, sallad, vitlöksdressing & kaffe.","en":"Includes drink, two kinds of bread, salad, garlic dressing & coffee."},"favoritbiffenTitle":{"sv":"Favoritbiffen","en":"The Favourite"},"favoritbiffenDescription":{"sv":"Ryggbiff med pommes, rödvinssås & bearnaise. Inkl. samma tillbehör som veckans lunch.","en":"Sirloin steak with fries, red wine sauce & béarnaise. Includes the same accompaniments as the weekly lunch."},"favoritbiffenPrice":{"sv":"165 kr","en":"165 SEK"},"hoursLagerbaren":{"sv":"Mån–Fre 11:00–14:30","en":"Mon–Fri 11:00–14:30"},"hoursMasalaArt":{"sv":"Mån–Fre 11:00–14:30","en":"Mon–Fri 11:00–14:30"},"closedMessage":{"sv":"Lunchen är stängd på helgen — välkommen tillbaka på måndag.","en":"Lunch is closed on weekends — we'll see you again on Monday."}}

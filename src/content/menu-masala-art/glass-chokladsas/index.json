@@ -1,1 +1,1 @@
-{"name":"Glass","description":"Vaniljglass med chokladsås.","price":"69 kr","category":"dessert","sortOrder":800,"vegetarian":true,"spicy":"mild"}
+{"name":"Glass","description":{"sv":"Vaniljglass med chokladsås.","en":"Vanilla ice cream with chocolate sauce."},"price":"69 kr","category":"dessert","sortOrder":800,"vegetarian":true,"spicy":"mild","nameEn":"Ice Cream"}

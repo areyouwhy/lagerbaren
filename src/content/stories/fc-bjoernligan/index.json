@@ -1,10 +1,1 @@
-{
-  "title": "FC Björnligan",
-  "subtitle": "Som alltid stolta sponsorer till er!",
-  "heroImage": "/images/cms/stories/fc-bjoernligan/heroImage.jpg",
-  "body": "Varmt välkomna FC Björnligan! ",
-  "brand": "lagerbaren",
-  "category": "sponsorship",
-  "featured": false,
-  "sortOrder": 3
-}
+{"title":"FC Björnligan","titleEn":"FC Björnligan","subtitle":{"sv":"Som alltid stolta sponsorer till er!","en":"As always, proud sponsors of you!"},"heroImage":"/images/cms/stories/fc-bjoernligan/heroImage.jpg","body":{"sv":"Varmt välkomna FC Björnligan!","en":"A warm welcome to FC Björnligan!"},"brand":"lagerbaren","category":"sponsorship","featured":false,"sortOrder":3}
