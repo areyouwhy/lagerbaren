@@ -1,1 +1,45 @@
-{"logo":null,"heroTitle":{"sv":"Lagerbaren","en":"Lagerbaren"},"heroSubtitle":{"sv":"Södermalms sportbar sedan 2005","en":"Södermalm's sports bar since 2005"},"heroImage":"/images/cms/about-lagerbaren/heroImage.jpg","description":{"sv":"Lagerbaren är Södermalms sportbar med stort utbud av fatöl, rom och whisky. Vi visar alla stora sportevenemang på våra storbilds-TV och projektorer. Välkommen till oss för lunch, after work eller en helkväll med god mat och dryck.","en":"Lagerbaren is Södermalm's sports bar with a wide selection of draft beers, rum and whisky. We show all the major sporting events on our big screens and projectors. Welcome for lunch, after-work or a full evening of great food and drinks."},"sportText":{"sv":"Vi visar alla stora sportevenemang — fotboll, hockey, basket, MMA och mer. Stolt sponsor av Hammarbys sportlag.","en":"We show every major sporting event — football, hockey, basketball, MMA and more. Proud sponsor of Hammarby's sports teams."},"quizText":{"sv":"Pubquiz varje onsdag kl 19:00. Samla laget och kom!","en":"Pub quiz every Wednesday at 7pm. Bring your team and join in!"},"addressLine1":{"sv":"Södermalm, Stockholm","en":"Södermalm, Stockholm"},"addressLine2":{"sv":"","en":""},"phone":"08-643 18 08","email":"boka@lagerbaren.se","openingHoursWeekdays":{"sv":"11:00 – 23:00","en":"11:00 – 23:00"},"openingHoursWeekend":{"sv":"12:00 – 01:00","en":"12:00 – 01:00"},"lunchHours":{"sv":"11:00 – 14:00","en":"11:00 – 14:00"},"mapEmbed":"<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2036.4853811672647!2d18.07407437711707!3d59.30815157460406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f77f697c67a3f%3A0x3f6c037e67bb7c8a!2sLagerbaren!5e0!3m2!1ssv!2sse!4v1775997966469!5m2!1ssv!2sse\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>","instagram":"","facebook":""}
+{
+  "heroTitle": {
+    "sv": "Lagerbaren",
+    "en": "Lagerbaren"
+  },
+  "heroSubtitle": {
+    "sv": "Södermalms sportbar sedan 2005",
+    "en": "Södermalm's sports bar since 2005"
+  },
+  "heroImage": "/images/cms/about-lagerbaren/heroImage.jpg",
+  "description": {
+    "sv": "Lagerbaren är Södermalms sportbar med stort utbud av fatöl, rom och whisky. Vi visar alla stora sportevenemang på våra storbilds-TV och projektorer. Välkommen till oss för lunch, after work eller en helkväll med god mat och dryck.",
+    "en": "Lagerbaren is Södermalm's sports bar with a wide selection of draft beers, rum and whisky. We show all the major sporting events on our big screens and projectors. Welcome for lunch, after-work or a full evening of great food and drinks."
+  },
+  "sportText": {
+    "sv": "Vi visar alla stora sportevenemang — fotboll, hockey, basket, MMA och mer. Stolt sponsor av Hammarbys sportlag.",
+    "en": "We show every major sporting event — football, hockey, basketball, MMA and more. Proud sponsor of Hammarby's sports teams."
+  },
+  "quizText": {
+    "sv": "Pubquiz varje onsdag kl 19:00. Samla laget och kom!",
+    "en": "Pub quiz every Wednesday at 7pm. Bring your team and join in!"
+  },
+  "addressLine1": {
+    "sv": "Södermalm, Stockholm",
+    "en": "Södermalm, Stockholm"
+  },
+  "addressLine2": {},
+  "phone": "08-643 18 08",
+  "email": "boka@lagerbaren.se",
+  "openingHoursWeekdays": {
+    "sv": "11:00 – 23:00",
+    "en": "11:00 – 23:00"
+  },
+  "openingHoursWeekend": {
+    "sv": "12:00 – 01:00",
+    "en": "12:00 – 01:00"
+  },
+  "lunchHours": {
+    "sv": "11:00 – 14:00",
+    "en": "11:00 – 14:00"
+  },
+  "mapEmbed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2036.4853811672647!2d18.07407437711707!3d59.30815157460406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f77f697c67a3f%3A0x3f6c037e67bb7c8a!2sLagerbaren!5e0!3m2!1ssv!2sse!4v1775997966469!5m2!1ssv!2sse\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+  "instagram": "https://www.instagram.com/restaurantlagerbaren/",
+  "facebook": "https://www.facebook.com/lagerbaren"
+}
