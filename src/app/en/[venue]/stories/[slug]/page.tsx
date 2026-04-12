@@ -3,7 +3,18 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { BRAND } from "@/lib/constants";
 import { getDict, type Venue } from "@/lib/i18n";
-import { getStory, getStoryCategoryLabel } from "@/lib/venue-content";
+import { getStory, getStoryCategoryLabel, getVenueStories } from "@/lib/venue-content";
+
+export async function generateStaticParams() {
+  const params: { venue: string; slug: string }[] = [];
+  for (const venue of ["lagerbaren", "masala-art"] as Venue[]) {
+    const stories = await getVenueStories(venue);
+    for (const story of stories) {
+      params.push({ venue, slug: story.slug });
+    }
+  }
+  return params;
+}
 
 export default async function StoryDetailPageEN({
   params,

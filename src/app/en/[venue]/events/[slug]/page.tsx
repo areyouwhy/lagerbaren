@@ -3,7 +3,18 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { BRAND } from "@/lib/constants";
 import { getDict, type Venue } from "@/lib/i18n";
-import { getEvent, getSiteInfo } from "@/lib/venue-content";
+import { getEvent, getSiteInfo, getVenueEvents } from "@/lib/venue-content";
+
+export async function generateStaticParams() {
+  const params: { venue: string; slug: string }[] = [];
+  for (const venue of ["lagerbaren", "masala-art"] as Venue[]) {
+    const events = await getVenueEvents(venue);
+    for (const event of events) {
+      params.push({ venue, slug: event.slug });
+    }
+  }
+  return params;
+}
 
 const CATEGORY_LABELS: Record<string, string> = {
   sport: "Sport",
