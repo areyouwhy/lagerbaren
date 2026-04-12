@@ -373,13 +373,27 @@ export async function getVenueAbout(venue: Venue, locale: Locale) {
     ? await reader.singletons.aboutLagerbaren.read()
     : await reader.singletons.aboutMasalaArt.read();
   if (!data) return null;
+  const d = data as Record<string, unknown>;
   return {
-    heroTitle: localize((data as { heroTitle: LocalizedString }).heroTitle, locale),
-    heroSubtitle: localize((data as { heroSubtitle: LocalizedString }).heroSubtitle, locale),
-    heroImage: (data as { heroImage?: string | null }).heroImage ?? null,
-    description: localize((data as { description: LocalizedString }).description, locale),
-    sportText: localize((data as { sportText?: LocalizedString }).sportText ?? null, locale),
-    quizText: localize((data as { quizText?: LocalizedString }).quizText ?? null, locale),
+    // Branding & hero
+    logo: (d.logo as string | null) ?? null,
+    heroTitle: localize(d.heroTitle as LocalizedString, locale),
+    heroSubtitle: localize(d.heroSubtitle as LocalizedString, locale),
+    heroImage: (d.heroImage as string | null) ?? null,
+    description: localize(d.description as LocalizedString, locale),
+    sportText: localize((d.sportText as LocalizedString) ?? null, locale),
+    quizText: localize((d.quizText as LocalizedString) ?? null, locale),
+    // Contact & location
+    addressLine1: localize((d.addressLine1 as LocalizedString) ?? null, locale),
+    addressLine2: localize((d.addressLine2 as LocalizedString) ?? null, locale),
+    phone: (d.phone as string) ?? "",
+    email: (d.email as string) ?? "",
+    openingHoursWeekdays: localize((d.openingHoursWeekdays as LocalizedString) ?? null, locale),
+    openingHoursWeekend: localize((d.openingHoursWeekend as LocalizedString) ?? null, locale),
+    lunchHours: localize((d.lunchHours as LocalizedString) ?? null, locale),
+    mapEmbed: (d.mapEmbed as string) ?? "",
+    instagram: (d.instagram as string) ?? "",
+    facebook: (d.facebook as string) ?? "",
   };
 }
 
@@ -395,24 +409,6 @@ export async function getFestvaningInfo(locale: Locale) {
     fullBarTitle: localize(data.fullBarTitle as never, locale),
     fullBarDescription: localize(data.fullBarDescription as never, locale),
     contactInfo: localize(data.contactInfo as never, locale),
-  };
-}
-
-export async function getSiteInfo(locale: Locale) {
-  const data = await reader.singletons.siteInfo.read();
-  if (!data) return null;
-  return {
-    addressLine1: localize(data.addressLine1 as never, locale),
-    addressLine2: localize(data.addressLine2 as never, locale),
-    phoneLagerbaren: data.phoneLagerbaren as string,
-    phoneMasalaArt: data.phoneMasalaArt as string,
-    email: data.email as string,
-    instagramMasalaArt: data.instagramMasalaArt as string,
-    facebookMasalaArt: data.facebookMasalaArt as string,
-    openingHoursWeekdays: localize(data.openingHoursWeekdays as never, locale),
-    openingHoursWeekend: localize(data.openingHoursWeekend as never, locale),
-    lunchHours: localize(data.lunchHours as never, locale),
-    googleMapsEmbed: data.googleMapsEmbed as string,
   };
 }
 

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { BRAND } from "@/lib/constants";
 import { getDict, type Venue } from "@/lib/i18n";
-import { getEvent, getSiteInfo, getVenueEvents } from "@/lib/venue-content";
+import { getEvent, getVenueAbout, getVenueEvents } from "@/lib/venue-content";
 
 export async function generateStaticParams() {
   const params: { venue: string; slug: string }[] = [];
@@ -37,8 +37,8 @@ export default async function EventDetailPageEN({
   if (!event) notFound();
   if (event.brand !== "both" && event.brand !== v) notFound();
 
-  const siteInfo = await getSiteInfo("en");
-  const fallbackLocation = [siteInfo?.addressLine1, siteInfo?.addressLine2]
+  const venueInfo = await getVenueAbout(v, "en");
+  const fallbackLocation = [venueInfo?.addressLine1, venueInfo?.addressLine2]
     .filter(Boolean)
     .join(", ");
   const locationDisplay = event.location || fallbackLocation;

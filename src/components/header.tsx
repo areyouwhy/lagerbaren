@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -7,7 +8,15 @@ import { BRAND } from "@/lib/constants";
 import { type Locale, type Venue, getVenueNav, getDict } from "@/lib/i18n";
 import { LanguageSwitcher } from "./language-switcher";
 
-export function VenueHeader({ locale, venue }: { locale: Locale; venue: Venue }) {
+export function VenueHeader({
+  locale,
+  venue,
+  logo,
+}: {
+  locale: Locale;
+  venue: Venue;
+  logo?: string | null;
+}) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const nav = getVenueNav(locale, venue);
@@ -19,10 +28,22 @@ export function VenueHeader({ locale, venue }: { locale: Locale; venue: Venue })
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link
           href={locale === "sv" ? `/${venue}` : `/en/${venue}`}
-          className="text-lg font-bold tracking-wide"
+          className="flex items-center gap-2"
           style={{ color: brand.accent }}
+          aria-label={brand.name}
         >
-          {brand.name}
+          {logo ? (
+            <Image
+              src={logo}
+              alt={brand.name}
+              width={140}
+              height={36}
+              className="h-9 w-auto"
+              priority
+            />
+          ) : (
+            <span className="text-lg font-bold tracking-wide">{brand.name}</span>
+          )}
         </Link>
 
         {/* Desktop nav */}

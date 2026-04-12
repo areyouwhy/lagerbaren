@@ -308,24 +308,6 @@ export default config({
     }),
   },
   singletons: {
-    siteInfo: singleton({
-      label: "Kontaktinformation",
-      path: "src/content/site-info/",
-      format: "json",
-      schema: {
-        addressLine1: localizedText("Adress rad 1"),
-        addressLine2: localizedText("Adress rad 2"),
-        phoneLagerbaren: fields.text({ label: "Telefon Lagerbaren", defaultValue: "08-643 18 08" }),
-        phoneMasalaArt: fields.text({ label: "Telefon Masala Art", defaultValue: "08-36 88 48" }),
-        email: fields.text({ label: "Bokningsemail", defaultValue: "boka@lagerbaren.se" }),
-        instagramMasalaArt: fields.text({ label: "Instagram Masala Art", defaultValue: "@masalaartsodermalm" }),
-        facebookMasalaArt: fields.text({ label: "Facebook Masala Art", defaultValue: "masalaartstreetfood" }),
-        openingHoursWeekdays: localizedText("Öppettider vardagar"),
-        openingHoursWeekend: localizedText("Öppettider helg"),
-        lunchHours: localizedText("Lunchtider"),
-        googleMapsEmbed: fields.text({ label: "Google Maps Embed", multiline: true }),
-      },
-    }),
     lunchInfo: singleton({
       label: "Lunchinfo",
       path: "src/content/lunch-info/",
@@ -361,6 +343,13 @@ export default config({
       path: "src/content/about-lagerbaren/",
       format: "json",
       schema: {
+        // — Branding & hero —
+        logo: fields.image({
+          label: "Logotyp",
+          description: "Visas i headern och footern. Använd PNG eller SVG med transparent bakgrund.",
+          directory: "public/images/cms/about-lagerbaren",
+          publicPath: "/images/cms/about-lagerbaren/",
+        }),
         heroTitle: localizedText("Hero-titel"),
         heroSubtitle: localizedText("Hero-undertitel"),
         heroImage: fields.image({
@@ -372,6 +361,21 @@ export default config({
         description: localizedText("Beskrivning", { multiline: true }),
         sportText: localizedText("Sport-text", { multiline: true }),
         quizText: localizedText("Quiz-text"),
+        // — Contact & location —
+        addressLine1: localizedText("Adress rad 1"),
+        addressLine2: localizedText("Adress rad 2"),
+        phone: fields.text({ label: "Telefon", defaultValue: "08-643 18 08" }),
+        email: fields.text({ label: "Bokningsemail", defaultValue: "boka@lagerbaren.se" }),
+        openingHoursWeekdays: localizedText("Öppettider vardagar"),
+        openingHoursWeekend: localizedText("Öppettider helg"),
+        lunchHours: localizedText("Lunchtider"),
+        mapEmbed: fields.text({
+          label: "Google Maps embed",
+          description: "Klistra in <iframe>-koden från Google Maps Share → Embed a map.",
+          multiline: true,
+        }),
+        instagram: fields.text({ label: "Instagram", description: "Användarnamn eller URL." }),
+        facebook: fields.text({ label: "Facebook", description: "Användarnamn eller URL." }),
       },
     }),
     aboutMasalaArt: singleton({
@@ -379,6 +383,13 @@ export default config({
       path: "src/content/about-masala-art/",
       format: "json",
       schema: {
+        // — Branding & hero —
+        logo: fields.image({
+          label: "Logotyp",
+          description: "Visas i headern och footern. Använd PNG eller SVG med transparent bakgrund.",
+          directory: "public/images/cms/about-masala-art",
+          publicPath: "/images/cms/about-masala-art/",
+        }),
         heroTitle: localizedText("Hero-titel"),
         heroSubtitle: localizedText("Hero-undertitel"),
         heroImage: fields.image({
@@ -388,6 +399,21 @@ export default config({
           publicPath: "/images/cms/about-masala-art/",
         }),
         description: localizedText("Beskrivning", { multiline: true }),
+        // — Contact & location —
+        addressLine1: localizedText("Adress rad 1"),
+        addressLine2: localizedText("Adress rad 2"),
+        phone: fields.text({ label: "Telefon", defaultValue: "08-36 88 48" }),
+        email: fields.text({ label: "Bokningsemail", defaultValue: "boka@lagerbaren.se" }),
+        openingHoursWeekdays: localizedText("Öppettider vardagar"),
+        openingHoursWeekend: localizedText("Öppettider helg"),
+        lunchHours: localizedText("Lunchtider"),
+        mapEmbed: fields.text({
+          label: "Google Maps embed",
+          description: "Klistra in <iframe>-koden från Google Maps Share → Embed a map.",
+          multiline: true,
+        }),
+        instagram: fields.text({ label: "Instagram", description: "Användarnamn eller URL." }),
+        facebook: fields.text({ label: "Facebook", description: "Användarnamn eller URL." }),
       },
     }),
   },
