@@ -39,6 +39,9 @@ yarn-error.log*
 # scraped reference content (source files for migration, not for shipping)
 /scraped-content
 
+# Claude Code internals
+/.claude
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
