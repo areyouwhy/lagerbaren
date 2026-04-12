@@ -3,7 +3,7 @@ import { PageHero } from "@/components/page-hero";
 import { AmbienceStrip } from "@/components/ambience-strip";
 import { BRAND } from "@/lib/constants";
 import { getDict, type Venue } from "@/lib/i18n";
-import { getAmbienceImages, getVenueAbout, getVenueEvents, splitEvents } from "@/lib/venue-content";
+import { getFeaturedAmbienceImages, getVenueAbout, getVenueEvents, splitEvents } from "@/lib/venue-content";
 import { UpcomingEventList } from "@/components/event-list";
 
 const LOCALE = "en";
@@ -24,7 +24,7 @@ export default async function VenueHomeEN({
   const heroSubtitle = about?.heroSubtitle || brand.tagline.en;
   const description = about?.description || "";
   const heroImage = about?.heroImage ?? null;
-  const ambienceImages = await getAmbienceImages(v);
+  const ambienceImages = await getFeaturedAmbienceImages(v);
 
   return (
     <>

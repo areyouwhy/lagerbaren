@@ -425,3 +425,18 @@ export async function getAmbienceImages(venue: Venue): Promise<string[]> {
     .map((i) => i.entry.image)
     .filter((src): src is string => typeof src === "string" && src.length > 0);
 }
+
+/**
+ * Featured ambience images for the venue homepage strip.
+ * Filters to only entries with featuredOnHome = true and caps at 6
+ * (so the strip never explodes if the editor accidentally ticks dozens).
+ */
+export async function getFeaturedAmbienceImages(venue: Venue): Promise<string[]> {
+  const items = await reader.collections.ambienceImages.all();
+  return items
+    .filter((i) => i.entry.venue === venue && (i.entry as { featuredOnHome?: boolean }).featuredOnHome === true)
+    .sort((a, b) => (a.entry.sortOrder ?? 0) - (b.entry.sortOrder ?? 0))
+    .slice(0, 6)
+    .map((i) => i.entry.image)
+    .filter((src): src is string => typeof src === "string" && src.length > 0);
+}

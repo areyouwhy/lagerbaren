@@ -221,7 +221,7 @@ export default config({
         }),
         image: fields.image({
           label: "Bild",
-          description: "Foto för bildremsan på startsidan.",
+          description: "Foto för galleriet och eventuellt startsidan.",
           directory: "public/images/cms/ambience",
           publicPath: "/images/cms/ambience/",
           validation: { isRequired: true },
@@ -233,6 +233,11 @@ export default config({
             { label: "Masala Art", value: "masala-art" },
           ],
           defaultValue: "lagerbaren",
+        }),
+        featuredOnHome: fields.checkbox({
+          label: "Visa på startsidan",
+          description: "Markera för att visa denna bild i den lilla bildremsan på startsidan. Max 6 bilder per plats visas — välj de bästa. Galleriet visar alltid alla bilder oavsett detta val.",
+          defaultValue: false,
         }),
         sortOrder: fields.integer({ label: "Sorteringsordning (lägre först)", defaultValue: 0 }),
       },
