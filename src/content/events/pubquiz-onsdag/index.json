@@ -1,1 +1,16 @@
-{"title":"Pubquiz","description":{"sv":"Veckans quiz med fina priser! Samla laget och kom.","en":"Our classic pub quiz, every Wednesday at 7pm. Bring your team."},"date":null,"endDate":null,"time":"19:00","brand":"both","category":"quiz","recurring":true,"recurringDay":"Onsdag","featured":false,"titleEn":"Wednesday Pub Quiz","body":{"sv":"","en":""},"location":{"sv":"","en":""}}
+{
+  "title": "Pubquiz",
+  "titleEn": "Wednesday Pub Quiz",
+  "description": {
+    "sv": "Veckans quiz med fina priser! Samla laget och kom.",
+    "en": "Our classic pub quiz, every Wednesday at 7pm. Bring your team."
+  },
+  "body": {},
+  "time": "19:00",
+  "location": {},
+  "brand": "lagerbaren",
+  "category": "quiz",
+  "recurring": true,
+  "recurringDay": "Onsdag",
+  "featured": false
+}
